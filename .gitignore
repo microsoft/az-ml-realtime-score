@@ -328,3 +328,27 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+# Environments
+.env
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+#AML
+aml_config/
+scripts/aml_config/
+assets/
+scripts/assets/
+.amlignore
+scripts/.amlignore
+__pycache__/
+scripts/__pycache__/
+
+# Products
+datafolder/
+lgbmenv.yml
+model.pkl
+score.py
+
+
