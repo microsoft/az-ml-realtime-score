@@ -1,6 +1,6 @@
 ### Authors: Fidan Boylu Uz and Mario Bourgoin
 
-# Deploying Python models on a Kubernetes Cluster for real-time scoring
+# Deploying Python models on a Kubernetes Cluster for real-time scoring using Azure Machine Learning
 
 ## Overview
 This scenario shows how to deploy a Frequently Asked Questions (FAQ) matching model as a web service to provide predictions for user questions. For this scenario, “Input Data” in the architecture diagram refers to text strings containing the user questions to match with a list of FAQs. The scenario is designed for the Scikit-Learn machine learning library for Python but can be generalized to any scenario that uses Python models to make real-time predictions.
@@ -10,7 +10,7 @@ This scenario shows how to deploy a Frequently Asked Questions (FAQ) matching mo
 The scenario uses a subset of Stack Overflow question data which includes original questions tagged as JavaScript, their duplicate questions, and their answers. It trains a Scikit-Learn pipeline to predict the match probability of a duplicate question with each of the original questions. These predictions are made in real time using a REST API endpoint.
 The application flow for this architecture is as follows:
 1.	The client sends a HTTP POST request with the encoded question data.
-2.	The Flask app extracts the question from the request
+2.	The  webservice extracts the question from the request
 3.	The question is then sent to the Scikit-learn pipeline model for featurization and scoring. 
 4.	The matching FAQ questions with their scores are then piped into a JSON object and returned to the client.
 
