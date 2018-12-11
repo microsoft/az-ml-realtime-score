@@ -33,23 +33,28 @@ To set up your environment to run these notebooks, please follow these steps.  T
    ```
    git clone https://github.com/Microsoft/MLAKSDeployAML.git
    ```
-5. Create the Python MLAKSDeployAML virtual environment using the environment.yml:
+3. Add your user to the docker group:
+    ```
+    sudo usermod -aG docker $USER
+   ```
+   Exit and start a new bash shell.
+4. Create the Python MLAKSDeployAML virtual environment using the environment.yml:
    ```
    conda env create -f environment.yml
    ```
-6. Activate the virtual environment:
+5. Activate the virtual environment:
    ```
    source activate MLAKSDeployAML
    ```
-7. Login to Azure:
+6. Login to Azure:
    ```
    az login
    ```
-8. If you have more than one Azure subscription, select it:
+7. If you have more than one Azure subscription, select it:
    ```
    az account set --subscription <Your Azure Subscription>
    ```
-9. Start the Jupyter notebook server in the virtual environment:
+8. Start the Jupyter notebook server in the virtual environment:
    ```
    jupyter notebook
    ```
