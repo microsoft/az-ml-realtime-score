@@ -31,7 +31,7 @@ To set up your environment to run these notebooks, please follow these steps.  T
 1. Create a _Linux_ DSVM.
 2. Clone, fork, or download the zip file for this repository:
    ```
-   git clone https://github.com/Azure/MLAKSDeployment.git
+   git clone https://github.com/Microsoft/MLAKSDeployAML.git
    ```
 5. Create the Python MLAKSDeployAML virtual environment using the environment.yml:
    ```
