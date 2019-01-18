@@ -29,7 +29,7 @@ which addresses the first three prerequisites.
 
 ## Setup
 To set up your environment to run these notebooks, please follow these steps.  They setup the notebooks to use Docker and Azure seamlessly.
-1. Create a _Linux_ DSVM.
+1. Create an _Ubuntu_ _Linux_ DSVM and perform the following steps.
 2. Clone, fork, or download the zip file for this repository:
    ```
    git clone https://github.com/Microsoft/MLAKSDeployAML.git
