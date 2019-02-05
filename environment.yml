@@ -16,6 +16,7 @@ dependencies:
     - azure-cli==2.0.50
     - prompt_toolkit==2.0.7
     - lightgbm==2.1.2
-    - papermill==0.14.1
+    - papermill==0.15.1
+    - ipykernel==5.0.0
     - git+https://github.com/theskumar/python-dotenv
     - azureml-sdk[notebooks]
