@@ -31,5 +31,5 @@ steps:
     az login -t $(sptenent) --service-principal -u $(spidentity) --password $(spsecret)
     
     echo Execute Notebooks
-    papermill local/00_AML_Configuration.ipynb local/00_AML_Configuration_Output.ipynb --logoutput --no-progress-bar -k python3
+    papermill local/00_AML_Configuration.ipynb local/00_AML_Configuration_Output.ipynb --log-output --no-progress-bar -k python3
   displayName: 'Execute Notebooks'
