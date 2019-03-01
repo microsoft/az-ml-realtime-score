@@ -9,6 +9,9 @@ trigger:
 pool:
   vmImage: 'Ubuntu-16.04'
 
+variables:
+- group: AzureKeyVault
+
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
@@ -21,15 +24,15 @@ steps:
 - bash: |
     source /usr/share/miniconda/etc/profile.d/conda.sh
     which conda
-    conda env create -f environment.yml
-    conda env list
-    conda activate MLAKSDeployAML
-    conda env list  
+    # conda env create -f environment.yml
+    # conda env list
+    # conda activate MLAKSDeployAML
+    # conda env list  
   displayName: 'Conda install dependencies'
 
 - bash: |
     az login -t $(sptenent) --service-principal -u $(spidentity) --password $(spsecret)
 
-    conda activate MLAKSDeployAML
-    conda env list  
+    # conda activate MLAKSDeployAML
+    # conda env list  
   displayName: 'Conda install dependencies'
