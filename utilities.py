@@ -88,7 +88,7 @@ def read_questions(path, id, answerid):
     questions.sort_index(inplace=True)
     return questions
 
-def _get_auth(env_path):
+def get_auth(env_path):
     logger = logging.getLogger(__name__)
     if get_key(env_path, 'password') != "YOUR_SERVICE_PRINCIPAL_PASSWORD":
         logger.debug("Trying to create Workspace with Service Principal")
