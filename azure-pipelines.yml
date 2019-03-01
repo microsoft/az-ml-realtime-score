@@ -19,8 +19,17 @@ steps:
   displayName: 'Run a multi-line script'
 
 - bash: |
+    source /usr/share/miniconda/etc/profile.d/conda.sh
+    which conda
     conda env create -f environment.yml
     conda env list
+    conda activate MLAKSDeployAML
+    conda env list  
+  displayName: 'Conda install dependencies'
+
+- bash: |
+    az login -t $(sptenent) --service-principal -u $(spidentity) --password $(spsecret)
+
     conda activate MLAKSDeployAML
     conda env list  
   displayName: 'Conda install dependencies'
