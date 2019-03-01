@@ -22,4 +22,5 @@ steps:
     conda env create -f environment.yml
     conda env list
     conda activate MLAKSDeployAML
-conda env list  displayName: 'Conda install dependencies'
+    conda env list  
+  displayName: 'Conda install dependencies'
