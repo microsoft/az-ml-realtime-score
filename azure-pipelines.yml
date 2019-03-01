@@ -31,5 +31,5 @@ steps:
     az login -t $(sptenent) --service-principal -u $(spidentity) --password $(spsecret)
     
     echo Execute Notebooks
-    papermill 00_AML_Configuration.ipynb 00_AML_Configuration_Output.ipynb --log-output --no-progress-bar -k python3
+    papermill 00_AML_Configuration.ipynb 00_AML_Configuration_Output.ipynb --log-output --no-progress-bar -k python3 -p subscription_id $(azuresubscription) -p resource_group $(azureresourcegroup) -p workspace_name $(workspacename) -p workspace_region $(azureregion)
   displayName: 'Execute Notebooks'
