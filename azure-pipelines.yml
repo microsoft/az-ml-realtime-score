@@ -44,3 +44,4 @@ steps:
     echo Execute 02_Train_On_Local.ipynb
     papermill 02_Train_On_Local.ipynb 02_Train_On_Local_Output.ipynb --log-output --no-progress-bar -k python3 
   displayName: 'Execute 02_Train_On_Local.ipynb'
+  timeoutInMinutes: 180
