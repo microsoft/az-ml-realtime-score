@@ -1,0 +1,35 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+variables:
+- group: AzureKeyVault
+
+steps:
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+
+- bash: |
+    echo This UI is slow as shit
+    source /usr/share/miniconda/etc/profile.d/conda.sh
+    which conda
+    conda env create -f environment.yml
+    conda env list
+    conda activate MLAKSDeployAML
+    conda env list  
+
+    echo Login Azure Account
+    az login -t $(sptenent) --service-principal -u $(spidentity) --password $(spsecret)
+    
+    echo Execute Notebooks
+    papermill 00_AML_Configuration.ipynb 00_AML_Configuration_Output.ipynb --log-output --no-progress-bar -k python3 -p subscription_id $(azuresubscription) -p resource_group $(azureresourcegroup) -p workspace_name $(workspacename) -p workspace_region $(azureregion)
+  displayName: 'Execute Notebooks'
