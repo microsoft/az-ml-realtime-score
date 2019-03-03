@@ -4,44 +4,48 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'Ubuntu-16.04'
-
 variables:
 - group: AzureKeyVault
 
-steps:
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-
-- bash: |
-    echo This UI is slow
-    source /usr/share/miniconda/etc/profile.d/conda.sh
-    which conda
-    conda env create -f environment.yml
-    conda env list
-    conda activate MLAKSDeployAML
-    conda env list  
-    echo Login Azure Account
-    az login -t $(sptenent) --service-principal -u $(spidentity) --password $(spsecret)
-    
-    echo Execute 00_AML_Configuration.ipynb
-    papermill 00_AML_Configuration.ipynb 00_AML_Configuration_Output.ipynb --log-output --no-progress-bar -k python3 -p subscription_id $(azuresubscription) -p resource_group $(azureresourcegroup) -p workspace_name $(workspacename) -p workspace_region $(azureregion) -p tenant_id $(sptenent) -p username $(spidentity) -p password $(spsecret)
-  displayName: 'Execute 00_AML_Configuration.ipynb'
-  
-- bash: |
-    source /usr/share/miniconda/etc/profile.d/conda.sh
-    conda activate MLAKSDeployAML
-    echo Execute 01_Data_Prep.ipynb
-    papermill 01_Data_Prep.ipynb 01_Data_Prep_Output.ipynb --log-output --no-progress-bar -k python3 
-  displayName: 'Execute 01_Data_Prep.ipynb'
-  
-- bash: |
-    source /usr/share/miniconda/etc/profile.d/conda.sh
-    conda activate MLAKSDeployAML
-    echo Execute 02_Train_On_Local.ipynb
-    papermill 02_Train_On_Local.ipynb 02_Train_On_Local_Output.ipynb --log-output --no-progress-bar -k python3 
-  displayName: 'Execute 02_Train_On_Local.ipynb'
+jobs:
+- job: MLAKSDeployAMLJob
   timeoutInMinutes: 180
+  cancelTimeoutInMinutes: 2
+  pool:
+    vmImage: 'Ubuntu-16.04'
+
+  steps:
+  - script: |
+      echo Add other tasks to build, test, and deploy your project.
+      echo See https://aka.ms/yaml
+    displayName: 'Run a multi-line script'
+
+  - bash: |
+      echo This UI is slow
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      which conda
+      conda env create -f environment.yml
+      conda env list
+      conda activate MLAKSDeployAML
+      conda env list  
+      echo Login Azure Account
+      az login -t $(sptenent) --service-principal -u $(spidentity) --password $(spsecret)
+    
+      echo Execute 00_AML_Configuration.ipynb
+      papermill 00_AML_Configuration.ipynb 00_AML_Configuration_Output.ipynb --log-output --no-progress-bar -k python3 -p subscription_id $(azuresubscription) -p resource_group $(azureresourcegroup) -p workspace_name $(workspacename) -p workspace_region $(azureregion) -p tenant_id $(sptenent) -p username $(spidentity) -p password $(spsecret)
+    displayName: 'Execute 00_AML_Configuration.ipynb'
+  
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate MLAKSDeployAML
+      echo Execute 01_Data_Prep.ipynb
+      papermill 01_Data_Prep.ipynb 01_Data_Prep_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: 'Execute 01_Data_Prep.ipynb'
+  
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate MLAKSDeployAML
+      echo Execute 02_Train_On_Local.ipynb
+      papermill 02_Train_On_Local.ipynb 02_Train_On_Local_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: 'Execute 02_Train_On_Local.ipynb'
+    timeoutInMinutes: 180
