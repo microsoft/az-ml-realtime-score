@@ -63,6 +63,30 @@ jobs:
       conda activate MLAKSDeployAML
       echo Execute 04_Create_Image_Deploy_On_AKS.ipynb
       papermill 04_Create_Image_Deploy_On_AKS.ipynb 04_Create_Image_Deploy_On_AKS_Output.ipynb --log-output --no-progress-bar -k python3 -p image_name $(aksimagename) -p aks_location $(azureregion) -p aks_name $(aksname) -p aks_service_name $(aksvcname)
-    displayName: '04_Develop_Scoring_Script.ipynb'
+    displayName: '04_Create_Image_Deploy_On_AKS.ipynb'
+    timeoutInMinutes: 60
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate MLAKSDeployAML
+      echo Execute 05_Speed_Test_WebApp.ipynb
+      papermill 05_Speed_Test_WebApp.ipynb 05_Speed_Test_WebApp_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '05_Speed_Test_WebApp.ipynb'
+    timeoutInMinutes: 60
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate MLAKSDeployAML
+      echo Execute 06_Real_Time_Scoring.ipynb
+      papermill 06_Real_Time_Scoring.ipynb 06_Real_Time_Scoring_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '06_Real_Time_Scoring.ipynb'
+    timeoutInMinutes: 60
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate MLAKSDeployAML
+      echo Execute 07_Tear_Down.ipynb
+      papermill 07_Tear_Down.ipynb 07_Tear_Down_Output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '07_Tear_Down.ipynb'
     timeoutInMinutes: 60
 
