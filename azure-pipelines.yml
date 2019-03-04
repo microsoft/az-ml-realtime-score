@@ -9,7 +9,7 @@ variables:
 
 jobs:
 - job: MLAKSDeployAMLJob
-  timeoutInMinutes: 180
+  timeoutInMinutes: 300
   cancelTimeoutInMinutes: 2
   pool:
     vmImage: 'Ubuntu-16.04'
@@ -48,4 +48,4 @@ jobs:
       echo Execute 02_Train_On_Local.ipynb
       papermill 02_Train_On_Local.ipynb 02_Train_On_Local_Output.ipynb --log-output --no-progress-bar -k python3 
     displayName: 'Execute 02_Train_On_Local.ipynb'
-    timeoutInMinutes: 180
+    timeoutInMinutes: 300
