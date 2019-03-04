@@ -98,7 +98,7 @@ def get_auth(env_path):
         auth = ServicePrincipalAuthentication(
             tenant_id=aml_sp_tennant_id,
             username=aml_sp_username,
-            password=aml_sp_password,
+            password=aml_sp_password
         )
     else:
         logger.debug("Trying to create Workspace with CLI Authentication")
