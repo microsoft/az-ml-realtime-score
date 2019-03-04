@@ -8,6 +8,8 @@ import ipywidgets as widgets
 from azureml.core.authentication import ServicePrincipalAuthentication
 from azureml.core.authentication import AzureCliAuthentication
 from azureml.core.authentication import InteractiveLoginAuthentication
+from azureml.core.authentication import AuthenticationException
+
 from dotenv import set_key, get_key
 import logging
 
