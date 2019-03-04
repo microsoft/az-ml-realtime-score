@@ -179,6 +179,6 @@ if __name__ == '__main__':
 
 
     # Write the scored instances to a file, along with the ordered original questions's answer ids.
-#     test_score.to_csv(instances_path, sep='\t', index=False,
-#                     encoding='latin1')
-#     label_order.to_csv(labels_path, sep='\t', index=False)
+    test_score.to_csv(instances_path, sep='\t', index=False,
+                    encoding='latin1')
+    label_order.to_csv(labels_path, sep='\t', index=False)
