@@ -33,21 +33,21 @@ jobs:
     
       echo Execute 00_AML_Configuration.ipynb
       papermill 00_AML_Configuration.ipynb 00_AML_Configuration_Output.ipynb --log-output --no-progress-bar -k python3 -p subscription_id $(azuresubscription) -p resource_group $(azureresourcegroup) -p workspace_name $(workspacename) -p workspace_region $(azureregion) -p tenant_id $(sptenent) -p username $(spidentity) -p password $(spsecret)
-    displayName: 'Execute 00_AML_Configuration.ipynb'
+    displayName: '00_AML_Configuration.ipynb'
   
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLAKSDeployAML
       echo Execute 01_Data_Prep.ipynb
       papermill 01_Data_Prep.ipynb 01_Data_Prep_Output.ipynb --log-output --no-progress-bar -k python3 
-    displayName: 'Execute 01_Data_Prep.ipynb'
+    displayName: '01_Data_Prep.ipynb'
   
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLAKSDeployAML
       echo Execute 02_Train_On_Local.ipynb
       papermill 02_Train_On_Local.ipynb 02_Train_On_Local_Output.ipynb --log-output --no-progress-bar -k python3 
-    displayName: 'Execute 02_Train_On_Local.ipynb'
+    displayName: '02_Train_On_Local.ipynb'
     timeoutInMinutes: 300
 
   - bash: |
