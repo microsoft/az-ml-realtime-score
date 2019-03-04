@@ -63,6 +63,6 @@ jobs:
       conda activate MLAKSDeployAML
       echo Execute 04_Create_Image_Deploy_On_AKS.ipynb
       papermill 04_Create_Image_Deploy_On_AKS.ipynb 04_Create_Image_Deploy_On_AKS_Output.ipynb --log-output --no-progress-bar -k python3 -p image_name $(aksimagename) -p aks_location $(azureregion) -p aks_name $(aksname) -p aks_service_name $(aksvcname)
-    displayName: '03_Develop_Scoring_Script.ipynb'
+    displayName: '04_Develop_Scoring_Script.ipynb'
     timeoutInMinutes: 60
 
