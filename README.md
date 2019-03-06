@@ -1,3 +1,5 @@
+![](https://dev.azure.com/customai/MLAKSDeployAMLPipeline/_apis/build/status/Microsoft.MLAKSDeployAML?branchName=master)
+
 ### Authors: Fidan Boylu Uz
 ### Acknowledgements: Mario Bourgoin, Mathew Salvaris
 
