@@ -2,8 +2,11 @@
 # MLAKSDeploy Pipeline 
 
 trigger:
-- master
-
+  batch: true
+  branches:
+    include:
+    - master
+    
 variables:
 - group: AzureKeyVault
 
