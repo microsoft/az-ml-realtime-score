@@ -3,6 +3,11 @@
 
 # Deploying Python models for real-time scoring using Azure Machine Learning
 
+In this repository there are a number of tutorials in Jupyter notebooks that have step-by-step instructions on (1) how to train a machine learning model using Python; (2) how to deploy a trained machine learning model throught Azure Machine Learning (AzureML). The tutorials cover how to deploy models on following deployment target:
+
+- [Azure Kubernetes Service (AKS) Cluster](./{{cookiecutter.project_name}}/aks)
+- [Azure IoT Edge](./{{cookiecutter.project_name}}/iotedge)
+
 ## Overview
 This scenario shows how to deploy a Frequently Asked Questions (FAQ) matching model as a web service to provide predictions for user questions. For this scenario, “Input Data” in the architecture diagram refers to text strings containing the user questions to match with a list of FAQs. The scenario is designed for the Scikit-Learn machine learning library for Python but can be generalized to any scenario that uses Python models to make real-time predictions.
 
