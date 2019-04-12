@@ -1,4 +1,4 @@
-name: MLAKSDeployAML
+name: deployment_aml
 channels:
   - conda-forge
 dependencies:
