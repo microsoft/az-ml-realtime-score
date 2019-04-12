@@ -8,6 +8,8 @@ import ipywidgets as widgets
 from azureml.core.authentication import ServicePrincipalAuthentication
 from azureml.core.authentication import AzureCliAuthentication
 from azureml.core.authentication import InteractiveLoginAuthentication
+from azureml.core.authentication import AuthenticationException
+
 from dotenv import set_key, get_key
 import logging
 
@@ -98,7 +100,7 @@ def get_auth(env_path):
         auth = ServicePrincipalAuthentication(
             tenant_id=aml_sp_tennant_id,
             username=aml_sp_username,
-            password=aml_sp_password,
+            password=aml_sp_password
         )
     else:
         logger.debug("Trying to create Workspace with CLI Authentication")
