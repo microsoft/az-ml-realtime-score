@@ -1,7 +1,7 @@
-### Authors: Fidan Boylu Uz
+### Authors: Fidan Boylu Uz, Yan Zhang
 ### Acknowledgements: Mario Bourgoin, Mathew Salvaris
 
-# Deploying Python models on a Kubernetes Cluster for real-time scoring using Azure Machine Learning
+# Deploying Python models for real-time scoring using Azure Machine Learning
 
 ## Overview
 This scenario shows how to deploy a Frequently Asked Questions (FAQ) matching model as a web service to provide predictions for user questions. For this scenario, “Input Data” in the architecture diagram refers to text strings containing the user questions to match with a list of FAQs. The scenario is designed for the Scikit-Learn machine learning library for Python but can be generalized to any scenario that uses Python models to make real-time predictions.
@@ -30,45 +30,24 @@ which addresses the first three prerequisites.
 ## Setup
 To set up your environment to run these notebooks, please follow these steps.  They setup the notebooks to use Docker and Azure seamlessly.
 1. Create an _Ubuntu_ _Linux_ DSVM and perform the following steps.
-2. Clone, fork, or download the zip file for this repository:
-   ```
-   git clone https://github.com/Microsoft/MLAKSDeployAML.git
-   ```
-3. Add your user to the docker group:
-    ```
-    sudo usermod -aG docker $USER
-   ```
-   Exit and start a new bash shell.
-4. Login to Docker with your username and password:
-    ```
-    docker login
-   ```
-5. Create the Python MLAKSDeployAML virtual environment using the environment.yml:
-   ```
-   conda env create -f environment.yml
-   ```
-6. Activate the virtual environment:
-   ```
-   source activate MLAKSDeployAML
-   ```
-7. Login to Azure:
-   ```
-   az login
-   ```
-8. If you have more than one Azure subscription, select it:
-   ```
-   az account set --subscription <Your Azure Subscription>
-   ```
-9. Start the Jupyter notebook server in the virtual environment:
-   ```
-   jupyter notebook
-   ```
 
-## Steps
-After following the setup instructions above, run the Jupyter notebooks in order starting with the first notebook.
+2. Install [cookiecutter](https://cookiecutter.readthedocs.io/en/latest/installation.html), a tool creates projects from project templates.
+```bash
+pip install cookiecutter
+```
 
-## Cleaning up
-To remove the conda environment created see [here](https://conda.io/docs/commands/env/conda-env-remove.html). The last Jupyter notebook also gives details on deleting Azure resources associated with this repository.
+3. Clone and choose a specific framework and deployment option for this repository. You will obtain a repository tailored to your choice of framework and deployment compute target.
+   ```bash
+   cookiecutter https://github.com/Microsoft/MLAKSDeployAML.git --checkout yzhang
+   ```
+You will be asked to choose or enter information such as *project name*, *subsciption id*, *resource group*, etc. in an interactive way. If a dafult value is provided, you can press *Enter* to accept the default value and continue or enter value of your choice. For example, if you want to learn how to deploy machine learing model on AKS Cluster, you should have values "aks" for variable *deployment_type*. Instead, if you want to learn deploying machine learning model on IoT Edge, you should select "iotedge" for variable *deployment_type*. 
+
+You must provide a value for "subscription_id", otherwise a error "ERROR: The subscription id is missing, please enter a valid subscription id" will be generated after all the questions are asked. You have to perform Step 3 all over again. The full list of questions can be found in [cookiecutter.json](./cookiecutter.json) file. 
+
+Please make sure all entered information are correct, as these information are used to customize the content of your repo. 
+
+
+4. Proceed with README files such as [aks](./{{cookiecutter.project_name}}/aks/README.md) or [iotedge](./{{cookiecutter.project_name}}/iotedge/README.md). In your local host, by far you should get a repo with name *project_name* you have specified. Go find a README.md file in this repo and proceed with instructions specified in it. 
 
 # Contributing
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
