@@ -115,7 +115,8 @@ test-notebook-iot1:
 	source activate deployment_aml
 	@echo Testing 05_DeployOnIOTedge.ipynb
 	export PYTHONPATH=${PWD}:${PYTHONPATH}
-	papermill iotedge/05_DeployOnIOTedge.ipynb test.ipynb \
+	cd iotedge
+	papermill 05_DeployOnIOTedge.ipynb test.ipynb \
 		--log-output \
 		--no-progress-bar \
 		-k python3 \
