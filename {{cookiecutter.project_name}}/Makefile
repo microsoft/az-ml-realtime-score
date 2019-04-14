@@ -165,6 +165,7 @@ clean: remove-notebook
 	rm -rf data_folder
 	rm -rf azureml-models
 	rm score.py lgbmenv.yml model.pkl
+	rm deployment.json deviceconfig.sh    
 
 notebook:
 	source activate deployment_aml
