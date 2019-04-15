@@ -116,6 +116,8 @@ test-notebook-iot1:
 	@echo Testing 05_DeployOnIOTedge.ipynb
 	export PYTHONPATH=${PWD}:${PYTHONPATH}
 	cd iotedge
+	mkdir ./data_folder
+	cp ../data_folder/dupes_test.tsv ./data_folder
 	papermill 05_DeployOnIOTedge.ipynb test.ipynb \
 		--log-output \
 		--no-progress-bar \
@@ -165,7 +167,8 @@ clean: remove-notebook
 	rm -rf data_folder
 	rm -rf azureml-models
 	rm score.py lgbmenv.yml model.pkl
-	rm deployment.json deviceconfig.sh    
+	rm iotedge/deployment.json iotedge/deviceconfig.sh
+	rm iotedge/data_folder
 
 notebook:
 	source activate deployment_aml
