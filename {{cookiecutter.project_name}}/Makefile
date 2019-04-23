@@ -29,6 +29,7 @@ setup:
 ifndef TENANT_ID
 	@echo starting interactive login
 	az login -o table
+	az account set --subscription ${SUBSCRIPTION_ID}
 else
 	@echo using service principal login
 	az login -t ${TENANT_ID} --service-principal -u ${SP_USERNAME} --password ${SP_PASSWORD}
