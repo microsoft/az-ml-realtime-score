@@ -27,8 +27,8 @@ To set up your environment to run these notebooks, please follow these steps.  T
 1. Add your user to the docker group:
     ```
     sudo usermod -aG docker $USER
-   ```
-   Exit and start a new bash shell.
+    newgrp docker
+   ```   
 2. Login to Docker with your username and password:
     ```
     docker login
