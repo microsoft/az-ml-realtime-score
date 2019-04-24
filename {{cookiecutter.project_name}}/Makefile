@@ -37,7 +37,7 @@ endif
 
 
 test-notebook1:
-	source activate deployment_aml
+	source activate MLAKSDeployAML
 	@echo Testing 00_AMLConfiguration.ipynb
 	papermill 00_AMLConfiguration.ipynb test.ipynb \
 		--log-output \
@@ -53,7 +53,7 @@ test-notebook1:
 		-p aks_service_name ${AKS_SERVICE_NAME}
 
 test-notebook2:
-	source activate deployment_aml
+	source activate MLAKSDeployAML
 	@echo Testing 01_DataPrep.ipynb
 	papermill 01_DataPrep.ipynb test.ipynb \
 		--log-output \
@@ -61,7 +61,7 @@ test-notebook2:
 		-k python3
 
 test-notebook3:
-	source activate deployment_aml
+	source activate MLAKSDeployAML
 	@echo Testing 02_TrainOnLocal.ipynb
 	papermill 02_TrainOnLocal.ipynb test.ipynb \
 		--log-output \
@@ -69,7 +69,7 @@ test-notebook3:
 		-k python3
 
 test-notebook4:
-	source activate deployment_aml
+	source activate MLAKSDeployAML
 	@echo Testing 03_DevelopScoringScript.ipynb
 	papermill 03_DevelopScoringScript.ipynb test.ipynb \
 		--log-output \
@@ -77,7 +77,7 @@ test-notebook4:
 		-k python3
 
 test-notebook5:
-	source activate deployment_aml
+	source activate MLAKSDeployAML
 	@echo Testing 04_CreateImage.ipynb
 	papermill 04_CreateImage.ipynb test.ipynb \
 		--log-output \
@@ -85,7 +85,7 @@ test-notebook5:
 		-k python3
 
 test-notebook6:
-	source activate deployment_aml
+	source activate MLAKSDeployAML
 	@echo Testing 05_TestWebApp.ipynb
 	papermill aks/05_DeployOnAKS.ipynb test.ipynb \
 		--log-output \
@@ -96,7 +96,7 @@ test-notebook6:
 		-p aks_service_name ${AKS_SERVICE_NAME}
 
 test-notebook7:
-	source activate deployment_aml
+	source activate MLAKSDeployAML
 	@echo Testing 06_SpeedTestWebApp.ipynb
 	papermill aks/06_SpeedTestWebApp.ipynb test.ipynb \
 		--log-output \
@@ -104,7 +104,7 @@ test-notebook7:
 		-k python3
         
 test-notebook8:
-	source activate deployment_aml
+	source activate MLAKSDeployAML
 	@echo Testing 07_RealTimeScoring.ipynb
 	papermill aks/07_RealTimeScoring.ipynb test.ipynb \
 		--log-output \
@@ -113,7 +113,7 @@ test-notebook8:
         
 
 test-notebook-iot1:
-	source activate deployment_aml
+	source activate MLAKSDeployAML
 	@echo Testing 05_DeployOnIOTedge.ipynb
 	export PYTHONPATH=${PWD}:${PYTHONPATH}
 	cd iotedge
@@ -128,7 +128,7 @@ test-notebook-iot1:
 		-p module_name mymodule
 
 test-notebook9:
-	source activate deployment_aml
+	source activate MLAKSDeployAML
 	@echo Testing 08_TearDown.ipynb
 	papermill aks/08_TearDown.ipynb test.ipynb \
 		--log-output \
@@ -136,7 +136,7 @@ test-notebook9:
 		-k python3
 
 test-notebook-iot2:
-	source activate deployment_aml
+	source activate MLAKSDeployAML
 	@echo Testing 06_TearDown.ipynb
 	export PYTHONPATH=${PWD}:${PYTHONPATH}
 	papermill iotedge/06_TearDown.ipynb test.ipynb \
@@ -161,7 +161,7 @@ remove-notebook:
 	rm -f test.ipynb
 
 clean: remove-notebook
-	conda remove --name deployment_aml -y --all
+	conda remove --name MLAKSDeployAML -y --all
 	rm -rf aml_config
 	rm -rf __pycache__
 	rm -rf .ipynb_checkpoints
@@ -172,11 +172,11 @@ clean: remove-notebook
 	rm iotedge/data_folder
 
 notebook:
-	source activate deployment_aml
+	source activate MLAKSDeployAML
 	jupyter notebook --port 9999 --ip 0.0.0.0 --no-browser
 
 install-jupytext:
-	source activate deployment_aml
+	source activate MLAKSDeployAML
 	conda install -c conda-forge jupytext
 
 convert-to-py:
