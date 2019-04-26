@@ -61,7 +61,8 @@ jobs:
           -p aks_name aksdeploy \
           -p aks_location $(azureregion) \
           -p aks_service_name aksservice
--
+    displayName: '05_DeployOnAKS.ipynb'
+
   - template: steps/papermill.yml
     parameters:
       notebook: 06_SpeedTestWebApp.ipynb
