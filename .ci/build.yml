@@ -52,7 +52,7 @@ jobs:
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLAKSDeployAML
       echo Execute 05_DeployOnAKS.ipynb
-      cd {{cookiecutter.project_name}}/ask
+      cd {{cookiecutter.project_name}}/aks
       papermill 05_DeployOnAKS.ipynb test.ipynb \
           --log-output \
           --no-progress-bar \
