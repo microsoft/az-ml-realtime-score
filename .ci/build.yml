@@ -36,9 +36,9 @@ jobs:
       location: "{{cookiecutter.project_name}}"
 
   - template: steps/papermill.yml
-      parameters:
-        notebook: 02_TrainOnLocal.ipynb
-        location: "{{cookiecutter.project_name}}"
+    parameters:
+      notebook: 02_TrainOnLocal.ipynb
+      location: "{{cookiecutter.project_name}}"
 
   - template: steps/papermill.yml
     parameters:
