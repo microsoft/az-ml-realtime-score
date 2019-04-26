@@ -25,10 +25,7 @@ jobs:
         -p resource_group $(azureresourcegroup) \
         -p workspace_name $(workspacename) \
         -p workspace_region $(azureregion) \
-        -p image_name $(aksimagename) \
-        -p tenant_id $(sptenent) \
-        -p username $(spidentity) \
-        -p password $(spsecret)
+        -p image_name $(aksimagename)
     displayName: '00_AML_Configuration.ipynb'
 
   - template: steps/papermill.yml
