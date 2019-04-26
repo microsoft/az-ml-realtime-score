@@ -50,6 +50,18 @@ jobs:
       notebook: 04_CreateImage.ipynb
       location: "{{cookiecutter.project_name}}"
 
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      source activate MLAKSDeployAML
+      @echo Testing 05_DeployOnAKS.ipynb
+      papermill aks/05_DeployOnAKS.ipynb test.ipynb \
+          --log-output \
+          --no-progress-bar \
+          -k python3 \
+          -p aks_name aksdeploy \
+          -p aks_location azureregion \
+          -p aks_service_name aksservice
+-
   - template: steps/papermill.yml
     parameters:
       notebook: 06_SpeedTestWebApp.ipynb

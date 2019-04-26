@@ -83,7 +83,7 @@ test-notebook5:
 
 test-notebook6:
 	source activate MLAKSDeployAML
-	@echo Testing 05_TestWebApp.ipynb
+	@echo Testing 05_DeployOnAKS.ipynb
 	papermill aks/05_DeployOnAKS.ipynb test.ipynb \
 		--log-output \
 		--no-progress-bar \
