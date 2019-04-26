@@ -52,9 +52,10 @@ jobs:
 
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
-      source activate MLAKSDeployAML
-      @echo Testing 05_DeployOnAKS.ipynb
-      papermill aks/05_DeployOnAKS.ipynb test.ipynb \
+      conda activate MLAKSDeployAML
+      echo Execute 05_DeployOnAKS.ipynb
+      cd {{cookiecutter.project_name}}/ask
+      papermill 05_DeployOnAKS.ipynb test.ipynb \
           --log-output \
           --no-progress-bar \
           -k python3 \
