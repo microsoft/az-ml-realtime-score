@@ -4,10 +4,12 @@ trigger:
   batch: true
   branches:
     include:
-    - staging
+    - master
     
 variables:
 - group: AzureKeyVault
 
 jobs:
-- template: jobs/build.yml
+- template: build.yml
+
+

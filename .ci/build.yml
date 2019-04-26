@@ -35,6 +35,58 @@ jobs:
       notebook: 01_DataPrep.ipynb
       location: "{{cookiecutter.project_name}}"
 
+  - template: steps/papermill.yml
+      parameters:
+        notebook: 02_TrainOnLocal.ipynb
+        location: "{{cookiecutter.project_name}}"
+
+  - template: steps/papermill.yml
+    parameters:
+      notebook: 03_DevelopScoringScript.ipynb
+      location: "{{cookiecutter.project_name}}"
+
+  - template: steps/papermill.yml
+    parameters:
+      notebook: 04_CreateImage.ipynb
+      location: "{{cookiecutter.project_name}}"
+
+  - template: steps/papermill.yml
+    parameters:
+      notebook: 06_SpeedTestWebApp.ipynb
+      location: "{{cookiecutter.project_name}}/aks"
+
+  - template: steps/papermill.yml
+    parameters:
+      notebook: 07_RealTimeScoring.ipynb
+      location: "{{cookiecutter.project_name}}/aks"
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate MLAKSDeployAML
+      cd {{cookiecutter.project_name}}/iotedge
+      echo Execute 05_DeployOnIOTedge.ipynb
+      cd iotedge
+      mkdir ./data_folder
+      cp ../data_folder/dupes_test.tsv ./data_folder
+      papermill 05_DeployOnIOTedge.ipynb test.ipynb \
+          --log-output \
+          --no-progress-bar \
+          -k python3 \
+          -p iot_hub_name fstlstnameiothub \
+          -p device_id mydevice \
+          -p module_name mymodule
+    displayName: '05_DeployOnIOTedge.ipynb'
+
+  - template: steps/papermill.yml
+    parameters:
+      notebook: 08_TearDown.ipynb
+      location: "{{cookiecutter.project_name}}/aks"
+
+  - template: steps/papermill.yml
+    parameters:
+      notebook: 06_TearDown.ipynb
+      location: "{{cookiecutter.project_name}}/iotedge"
+
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLAKSDeployAML
