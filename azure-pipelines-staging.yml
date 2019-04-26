@@ -19,7 +19,7 @@ jobs:
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       which conda
-      conda env create -f environment.yml
+      conda env create -f {{cookiecutter.project_name}}/environment.yml
       conda env list
       conda activate MLAKSDeployAML
       conda env list
@@ -39,7 +39,12 @@ jobs:
         -p username $(spidentity) \
         -p password $(spsecret)
     displayName: '00_AML_Configuration.ipynb'
+
   - template: steps/papermill.yml
+    parameters:
+      notebook: 01_DataPrep.ipynb
+      location: "{{cookiecutter.project_name}}"
+
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLAKSDeployAML
