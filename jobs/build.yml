@@ -31,32 +31,32 @@ jobs:
         -p password $(spsecret)
     displayName: '00_AML_Configuration.ipynb'
 
-  - template: steps/papermill.yml
+  - template: ../steps/papermill.yml
     parameters:
       notebook: 01_DataPrep.ipynb
       location: {{cookiecutter.project_name}}
 
-  - template: steps/papermill.yml
+  - template: ../steps/papermill.yml
     parameters:
       notebook: 02_TrainOnLocal.ipynb
       location: {{cookiecutter.project_name}}
 
-  - template: steps/papermill.yml
+  - template: ../steps/papermill.yml
     parameters:
       notebook: 03_DevelopScoringScript.ipynb
       location: {{cookiecutter.project_name}}
 
-  - template: steps/papermill.yml
+  - template: ../steps/papermill.yml
     parameters:
       notebook: 04_CreateImage.ipynb
       location: {{cookiecutter.project_name}}
 
-  - template: steps/papermill.yml
+  - template: ../steps/papermill.yml
     parameters:
       notebook: 06_SpeedTestWebApp.ipynb
       location: {{cookiecutter.project_name}}/aks
 
-  - template: steps/papermill.yml
+  - template: ../steps/papermill.yml
     parameters:
       notebook: 07_RealTimeScoring.ipynb
       location: {{cookiecutter.project_name}}/aks
@@ -78,12 +78,12 @@ jobs:
       		-p module_name mymodule
     displayName: '05_DeployOnIOTedge.ipynb'
 
-  - template: steps/papermill.yml
+  - template: ../steps/papermill.yml
     parameters:
       notebook: 08_TearDown.ipynb
       location: {{cookiecutter.project_name}}/aks
 
-  - template: steps/papermill.yml
+  - template: ../steps/papermill.yml
     parameters:
       notebook: 06_TearDown.ipynb
       location: {{cookiecutter.project_name}}/iotedge
