@@ -1,17 +1,17 @@
 
-parameters:
-  notebook: 01_DataPrep.ipynb
-  location: gaba
 
+parameters:
+  notebook: 01_DataPrep.ipynb  # defaults for any parameters that aren't specified
+  location: "{{cookiecutter.project_name}}"
 
 
 steps:
 - bash: |
     source /usr/share/miniconda/etc/profile.d/conda.sh
     conda activate MLAKSDeployAML
-    cd {{cookiecutter.project_name}}
-    echo Execute 01_DataPrep.ipyn
-    papermill 01_DataPrep.ipyn output.ipynb \
+    cd ${{parameters.location}}
+    echo Execute ${{parameters.notebook}}
+    papermill ${{parameters.notebook}} output.ipynb \
       --log-output \
       --no-progress-bar \
       -k python3
