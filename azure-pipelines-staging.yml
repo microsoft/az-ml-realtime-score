@@ -39,12 +39,7 @@ jobs:
         -p username $(spidentity) \
         -p password $(spsecret)
     displayName: '00_AML_Configuration.ipynb'
-
   - template: steps/papermill.yml
-    parameters:
-      notebook: 01_DataPrep.ipynb
-      location: {{cookiecutter.project_name}}
-
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLAKSDeployAML
