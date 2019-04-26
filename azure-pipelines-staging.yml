@@ -16,7 +16,7 @@ jobs:
   pool:
     vmImage: 'Ubuntu-16.04'
 
-  steps:
+steps:
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       which conda
