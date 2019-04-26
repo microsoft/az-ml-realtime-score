@@ -27,7 +27,7 @@ jobs:
       az login -t $(sptenent) --service-principal -u $(spidentity) --password $(spsecret)
       cd {{cookiecutter.project_name}}
       echo Execute 00_AMLConfiguration.ipynb
-      papermill 00_AML_Configuration.ipynb 00_AML_Configuration_Output.ipynb \
+      papermill 00_AMLConfiguration.ipynb 00_AMLConfiguration_Output.ipynb \
         --log-output \
         --no-progress-bar \
         -k python3 \
