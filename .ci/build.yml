@@ -25,6 +25,7 @@ jobs:
         -p resource_group $(azureresourcegroup) \
         -p workspace_name $(workspacename) \
         -p workspace_region $(azureregion) \
+        -p image_name $(aksimagename) \
         -p tenant_id $(sptenent) \
         -p username $(spidentity) \
         -p password $(spsecret)
@@ -59,9 +60,9 @@ jobs:
           --log-output \
           --no-progress-bar \
           -k python3 \
-          -p aks_name aksdeploy \
+          -p aks_name $(aksname) \
           -p aks_location $(azureregion) \
-          -p aks_service_name aksservice
+          -p aks_service_name $(aksvcname)
     displayName: '05_DeployOnAKS.ipynb'
 
   - template: steps/papermill.yml
