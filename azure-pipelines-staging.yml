@@ -46,8 +46,6 @@ jobs:
       notebook: 01_DataPrep.ipynb
       location: {{cookiecutter.project_name}}
 
-
-
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLAKSDeployAML
