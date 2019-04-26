@@ -1,7 +1,8 @@
 
 parameters:
-  notebook: 01_DataPrep.ipynb  # defaults for any parameters that aren't specified
+  notebook: 01_DataPrep.ipynb
   location: {{cookiecutter.project_name}}
+
 
 
 steps:
