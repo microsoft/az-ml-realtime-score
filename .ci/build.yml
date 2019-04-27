@@ -34,10 +34,9 @@ jobs:
       location: "{{cookiecutter.project_name}}"
 
   - bash: |
-      echo $(pwd)
-      echo $(ls)
       mkdir -p {{cookiecutter.project_name}}/iotedge/data_folder
       mkdir -p {{cookiecutter.project_name}}/aks/data_folder
+      cd {{cookiecutter.project_name}}
       cp data_folder/*.tsv {{cookiecutter.project_name}}/iotedge/data_folder
       cp data_folder/*.tsv {{cookiecutter.project_name}}/aks/data_folder
     displayName: 'Copying data'
