@@ -8,7 +8,7 @@ parameters:
 steps:
 - bash: |
     source /usr/share/miniconda/etc/profile.d/conda.sh
-    source activate MLAKSDeployAML
+    conda activate MLAKSDeployAML
     cd ${{parameters.location}}
     echo Execute ${{parameters.notebook}}
     papermill ${{parameters.notebook}} output.ipynb \
