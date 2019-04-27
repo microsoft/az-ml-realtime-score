@@ -52,6 +52,7 @@ jobs:
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLAKSDeployAML
       echo Execute 05_DeployOnAKS.ipynb
+      export PYTHONPATH=$(pwd)/{{cookiecutter.project_name}}:${PYTHONPATH}
       cd {{cookiecutter.project_name}}/aks
       papermill 05_DeployOnAKS.ipynb test.ipynb \
           --log-output \
@@ -75,6 +76,7 @@ jobs:
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
       conda activate MLAKSDeployAML
+      export PYTHONPATH=$(pwd)/{{cookiecutter.project_name}}:${PYTHONPATH}
       cd {{cookiecutter.project_name}}/iotedge
       echo Execute 05_DeployOnIOTedge.ipynb
       cd iotedge

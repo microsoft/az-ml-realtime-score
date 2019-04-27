@@ -9,6 +9,7 @@ steps:
 - bash: |
     source /usr/share/miniconda/etc/profile.d/conda.sh
     conda activate MLAKSDeployAML
+    export PYTHONPATH=$(pwd)/{{cookiecutter.project_name}}:${PYTHONPATH}
     cd ${{parameters.location}}
     echo Execute ${{parameters.notebook}}
     papermill ${{parameters.notebook}} output.ipynb \
