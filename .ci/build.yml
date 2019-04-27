@@ -11,7 +11,7 @@ jobs:
       which conda
       conda env create -f {{cookiecutter.project_name}}/environment.yml
       conda env list
-      conda activate MLAKSDeployAML
+      source activate MLAKSDeployAML
       conda env list
       echo Login Azure Account
       az login -t $(sptenent) --service-principal -u $(spidentity) --password $(spsecret)
@@ -50,7 +50,7 @@ jobs:
 
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
-      conda activate MLAKSDeployAML
+      source activate MLAKSDeployAML
       echo Execute 05_DeployOnAKS.ipynb
       cd {{cookiecutter.project_name}}/aks
       papermill 05_DeployOnAKS.ipynb test.ipynb \
@@ -74,7 +74,7 @@ jobs:
 
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
-      conda activate MLAKSDeployAML
+      source activate MLAKSDeployAML
       cd {{cookiecutter.project_name}}/iotedge
       echo Execute 05_DeployOnIOTedge.ipynb
       cd iotedge
@@ -101,7 +101,7 @@ jobs:
 
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
-      conda activate MLAKSDeployAML
+      source activate MLAKSDeployAML
       echo Execute Resource Group Delete
       existResponse=$(az group exists -n $(azureresourcegroup))
       if [ "$existResponse" == "true" ]; then
