@@ -54,6 +54,8 @@ jobs:
       echo Execute 05_DeployOnAKS.ipynb
       export PYTHONPATH=$(pwd)/{{cookiecutter.project_name}}:${PYTHONPATH}
       cd {{cookiecutter.project_name}}/aks
+      mkdir ./data_folder
+      cp ../data_folder/dupes_test.tsv ./data_folder
       papermill 05_DeployOnAKS.ipynb test.ipynb \
           --log-output \
           --no-progress-bar \
@@ -79,7 +81,6 @@ jobs:
       export PYTHONPATH=$(pwd)/{{cookiecutter.project_name}}:${PYTHONPATH}
       cd {{cookiecutter.project_name}}/iotedge
       echo Execute 05_DeployOnIOTedge.ipynb
-      cd iotedge
       mkdir ./data_folder
       cp ../data_folder/dupes_test.tsv ./data_folder
       papermill 05_DeployOnIOTedge.ipynb test.ipynb \
