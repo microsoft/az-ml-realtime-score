@@ -1,0 +1,15 @@
+# MLAKSDeploy Pipeline
+
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+    
+variables:
+- group: AzureKeyVault
+
+jobs:
+- template: build.yml
+
+
