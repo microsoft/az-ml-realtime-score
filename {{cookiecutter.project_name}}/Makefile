@@ -164,9 +164,9 @@ clean: remove-notebook
 	rm -rf .ipynb_checkpoints
 	rm -rf data_folder
 	rm -rf azureml-models
-	rm score.py lgbmenv.yml model.pkl
-	rm iotedge/deployment.json iotedge/deviceconfig.sh
-	rm iotedge/data_folder
+	rm -rf score.py lgbmenv.yml model.pkl
+	rm -rf iotedge/deployment.json iotedge/deviceconfig.sh
+	rm -rf iotedge/data_folder
 
 notebook:
 	source activate MLAKSDeployAML
