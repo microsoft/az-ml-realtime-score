@@ -56,30 +56,30 @@ jobs:
       notebook: 04_CreateImage.ipynb
       location: "{{cookiecutter.project_name}}"
 
-  - bash: |
-      source /usr/share/miniconda/etc/profile.d/conda.sh
-      conda activate MLAKSDeployAML
-      echo Execute 05_DeployOnAKS.ipynb
-      export PYTHONPATH=$(pwd)/{{cookiecutter.project_name}}:${PYTHONPATH}
-      cd {{cookiecutter.project_name}}/aks
-      papermill 05_DeployOnAKS.ipynb test.ipynb \
-          --log-output \
-          --no-progress-bar \
-          -k python3 \
-          -p aks_name $(aksname) \
-          -p aks_location $(azureregion) \
-          -p aks_service_name $(aksvcname)
-    displayName: '05_DeployOnAKS.ipynb'
-
-  - template: steps/papermill.yml
-    parameters:
-      notebook: 06_SpeedTestWebApp.ipynb
-      location: "{{cookiecutter.project_name}}/aks"
-
-  - template: steps/papermill.yml
-    parameters:
-      notebook: 07_RealTimeScoring.ipynb
-      location: "{{cookiecutter.project_name}}/aks"
+#  - bash: |
+#      source /usr/share/miniconda/etc/profile.d/conda.sh
+#      conda activate MLAKSDeployAML
+#      echo Execute 05_DeployOnAKS.ipynb
+#      export PYTHONPATH=$(pwd)/{{cookiecutter.project_name}}:${PYTHONPATH}
+#      cd {{cookiecutter.project_name}}/aks
+#      papermill 05_DeployOnAKS.ipynb test.ipynb \
+#          --log-output \
+#          --no-progress-bar \
+#          -k python3 \
+#          -p aks_name $(aksname) \
+#          -p aks_location $(azureregion) \
+#          -p aks_service_name $(aksvcname)
+#    displayName: '05_DeployOnAKS.ipynb'
+#
+#  - template: steps/papermill.yml
+#    parameters:
+#      notebook: 06_SpeedTestWebApp.ipynb
+#      location: "{{cookiecutter.project_name}}/aks"
+#
+#  - template: steps/papermill.yml
+#    parameters:
+#      notebook: 07_RealTimeScoring.ipynb
+#      location: "{{cookiecutter.project_name}}/aks"
 
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
