@@ -16,4 +16,5 @@ steps:
       --log-output \
       --no-progress-bar \
       -k python3
+    sleep 30
   displayName: '${{parameters.notebook}}'

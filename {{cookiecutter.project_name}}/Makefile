@@ -72,6 +72,7 @@ test-notebook4:
 		--log-output \
 		--no-progress-bar \
 		-k python3
+	sleep 1m
 
 test-notebook5:
 	source activate MLAKSDeployAML
@@ -80,6 +81,7 @@ test-notebook5:
 		--log-output \
 		--no-progress-bar \
 		-k python3
+	sleep 30
 
 test-notebook6:
 	source activate MLAKSDeployAML
