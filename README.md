@@ -41,18 +41,17 @@ To set up your environment to run these notebooks, please follow these steps.  T
 pip install cookiecutter
 ```
 
-3. Clone and choose a specific framework and deployment option for this repository. You will obtain a repository tailored to your choice of framework and deployment compute target.
+3. Use cookiecutter to clone this repository. Cookiecutter will prompt a series of questions where you will choose a specific framework, select your deployment settings, and obtain an Azure ML workspace.
    ```bash
    cookiecutter https://github.com/Microsoft/MLAKSDeployAML.git
    ```
-You will be asked to choose or enter information such as *project name*, *subsciption id*, *resource group*, etc. in an interactive way. If a dafult value is provided, you can press *Enter* to accept the default value and continue or enter value of your choice. For example, if you want to learn how to deploy machine learing model on AKS Cluster, you should have values "aks" for variable *deployment_type*. Instead, if you want to learn deploying machine learning model on IoT Edge, you should select "iotedge" for variable *deployment_type*. 
+   You will be asked to choose or enter information such as *project name*, *subsciption id*, *resource group*, etc. in an interactive way. You can press *Enter* to accept the default value or enter a value of your choice. For example, if you want to learn how to deploy machine learing model on AKS Cluster, you should choose the value "aks" for variable *deployment_type*. Instead, if you want to learn about deploying machine learning model on IoT Edge, you should select "iotedge" for the variable *deployment_type*. 
 
-You must provide a value for "subscription_id", otherwise a error "ERROR: The subscription id is missing, please enter a valid subscription id" will be generated after all the questions are asked. You have to perform Step 3 all over again. The full list of questions can be found in [cookiecutter.json](./cookiecutter.json) file. 
+   Provide a valid value for "subscription_id", otherwise a `subscription id is missing` error will be generated **after** all the questions are asked. You will have to perform Step 3 all over again. The full list of questions can be found in [cookiecutter.json](./cookiecutter.json) file. 
 
-Please make sure all entered information are correct, as these information are used to customize the content of your repo. 
+   Please make sure all entered information are correct, as these information are used to customize the content of your repo. 
 
-
-4. Proceed with README files such as [aks](./{{cookiecutter.project_name}}/aks/README.md) or [iotedge](./{{cookiecutter.project_name}}/iotedge/README.md). In your local host, by far you should get a repo with name *project_name* you specified. Go find a README.md file in this repo and proceed with instructions specified in it. 
+4. On your local machine, you should now have a repo with the *project_name* you specified. Find the README.md file in this repo and proceed with instructions specified in it. 
 
 # Contributing
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
