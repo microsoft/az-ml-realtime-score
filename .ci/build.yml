@@ -91,7 +91,7 @@ jobs:
           --log-output \
           --no-progress-bar \
           -k python3 \
-          -p iot_hub_name "fstlstnameiothub" \
+          -p iot_hub_name "ihcitest" \
           -p device_id "mydevice" \
           -p module_name "mymodule"
     displayName: '05_DeployOnIOTedge.ipynb'
