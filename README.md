@@ -1,3 +1,5 @@
+![](https://dev.azure.com/customai/MLAKSDeployAMLPipeline/_apis/build/status/Microsoft.MLAKSDeployAML%20(master)?branchName=master)
+
 ### Authors: Fidan Boylu Uz, Yan Zhang
 ### Acknowledgements: Mario Bourgoin, Mathew Salvaris
 
@@ -9,7 +11,7 @@ In this repository there are a number of tutorials in Jupyter notebooks that hav
 - [Azure IoT Edge](./{{cookiecutter.project_name}}/iotedge)
 
 ## Overview
-This scenario shows how to deploy a Frequently Asked Questions (FAQ) matching model as a web service to provide predictions for user questions. For this scenario, “Input Data” in the architecture diagram refers to text strings containing the user questions to match with a list of FAQs. The scenario is designed for the Scikit-Learn machine learning library for Python but can be generalized to any scenario that uses Python models to make real-time predictions.
+This scenario shows how to deploy a Frequently Asked Questions (FAQ) matching model as a web service to provide predictions for user questions. For this scenario, “Input Data” in the [architecture diagram](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/ai/realtime-scoring-python) refers to text strings containing the user questions to match with a list of FAQs. The scenario is designed for the Scikit-Learn machine learning library for Python but can be generalized to any scenario that uses Python models to make real-time predictions.
 
 ## Design
 <!-- ![alt text](Design.png "Design") -->
