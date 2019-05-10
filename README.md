@@ -1,3 +1,5 @@
+![](https://dev.azure.com/customai/MLAKSDeployAMLPipeline/_apis/build/status/Microsoft.MLAKSDeployAML%20(master)?branchName=master)
+
 ### Authors: Fidan Boylu Uz, Yan Zhang
 ### Acknowledgements: Mario Bourgoin, Mathew Salvaris
 
@@ -9,7 +11,7 @@ In this repository there are a number of tutorials in Jupyter notebooks that hav
 - [Azure IoT Edge](./{{cookiecutter.project_name}}/iotedge)
 
 ## Overview
-This scenario shows how to deploy a Frequently Asked Questions (FAQ) matching model as a web service to provide predictions for user questions. For this scenario, “Input Data” in the architecture diagram refers to text strings containing the user questions to match with a list of FAQs. The scenario is designed for the Scikit-Learn machine learning library for Python but can be generalized to any scenario that uses Python models to make real-time predictions.
+This scenario shows how to deploy a Frequently Asked Questions (FAQ) matching model as a web service to provide predictions for user questions. For this scenario, “Input Data” in the [architecture diagram](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/ai/realtime-scoring-python) refers to text strings containing the user questions to match with a list of FAQs. The scenario is designed for the Scikit-Learn machine learning library for Python but can be generalized to any scenario that uses Python models to make real-time predictions.
 
 ## Design
 <!-- ![alt text](Design.png "Design") -->
@@ -28,6 +30,16 @@ An example app that consumes the results is included with the scenario.
 3. [Docker](https://docs.docker.com/v17.12/install/linux/docker-ee/ubuntu) installed.
 4. [Azure account](https://azure.microsoft.com).
 
+---
+**NOTE**
+You will need to be able to run docker commands without sudo to run this tutorial. Use the following commands to do this.
+
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+``` 
+---
+
 The tutorial was developed on an [Azure Ubuntu
 DSVM](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro),
 which addresses the first three prerequisites.
@@ -41,18 +53,19 @@ To set up your environment to run these notebooks, please follow these steps.  T
 pip install cookiecutter
 ```
 
-3. Clone and choose a specific framework and deployment option for this repository. You will obtain a repository tailored to your choice of framework and deployment compute target.
+3. Use cookiecutter to clone this repository. Cookiecutter will prompt a series of questions where you will choose a specific framework, select your deployment settings, and obtain an Azure ML workspace.
    ```bash
    cookiecutter https://github.com/Microsoft/MLAKSDeployAML.git
    ```
-You will be asked to choose or enter information such as *project name*, *subsciption id*, *resource group*, etc. in an interactive way. If a dafult value is provided, you can press *Enter* to accept the default value and continue or enter value of your choice. For example, if you want to learn how to deploy machine learing model on AKS Cluster, you should have values "aks" for variable *deployment_type*. Instead, if you want to learn deploying machine learning model on IoT Edge, you should select "iotedge" for variable *deployment_type*. 
+   You will be asked to choose or enter information such as *project name*, *subsciption id*, *resource group*, etc. in an interactive way. You can press *Enter* to accept the default value or enter a value of your choice. For example, if you want to learn how to deploy machine learing model on AKS Cluster, you should choose the value "aks" for variable *deployment_type*. Instead, if you want to learn about deploying machine learning model on IoT Edge, you should select "iotedge" for the variable *deployment_type*. 
 
-You must provide a value for "subscription_id", otherwise a error "ERROR: The subscription id is missing, please enter a valid subscription id" will be generated after all the questions are asked. You have to perform Step 3 all over again. The full list of questions can be found in [cookiecutter.json](./cookiecutter.json) file. 
+   Provide a valid value for "subscription_id", otherwise a `subscription id is missing` error will be generated **after** all the questions are asked. You will have to perform Step 3 all over again. The full list of questions can be found in [cookiecutter.json](./cookiecutter.json) file. 
 
-Please make sure all entered information are correct, as these information are used to customize the content of your repo. 
+   Please make sure all entered information are correct, as these information are used to customize the content of your repo. 
+
+4. On your local machine, you should now have a repo with the *project_name* you specified. Find the README.md file in this repo and proceed with instructions specified in it. 
 
 
-4. Proceed with README files such as [aks](./{{cookiecutter.project_name}}/aks/README.md) or [iotedge](./{{cookiecutter.project_name}}/iotedge/README.md). In your local host, by far you should get a repo with name *project_name* you specified. Go find a README.md file in this repo and proceed with instructions specified in it. 
 
 # Contributing
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

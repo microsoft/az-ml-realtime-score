@@ -27,4 +27,6 @@ datafolder/
 lgbmenv.yml
 score.py
 
+.idea
+
 

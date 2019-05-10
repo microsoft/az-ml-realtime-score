@@ -5,7 +5,7 @@ import lightgbm as lgb
 from sklearn.feature_extraction import text
 from sklearn.pipeline import Pipeline, FeatureUnion, make_pipeline
 from sklearn.externals import joblib
-from ItemSelector import ItemSelector
+from item_selector import ItemSelector
 from label_rank import label_rank
 from azureml.core import Run
 

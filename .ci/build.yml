@@ -91,9 +91,9 @@ jobs:
           --log-output \
           --no-progress-bar \
           -k python3 \
-          -p iot_hub_name "ihcitest" \
-          -p device_id "mydevice" \
-          -p module_name "mymodule"
+          -p iot_hub_name fstlstnameiothub \
+          -p device_id mydevice \
+          -p module_name mymodule
     displayName: '05_DeployOnIOTedge.ipynb'
 
   - template: steps/papermill.yml
@@ -132,4 +132,4 @@ jobs:
       fieldMappings: |
         Description=Branch: Branch $(Build.SourceBranch) failed to build. Go to Boards>WorkItems and tag the failure type.
     displayName: 'Create work item on failure'
-    condition: failed()        
+    condition: failed()            
