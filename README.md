@@ -30,6 +30,16 @@ An example app that consumes the results is included with the scenario.
 3. [Docker](https://docs.docker.com/v17.12/install/linux/docker-ee/ubuntu) installed.
 4. [Azure account](https://azure.microsoft.com).
 
+---
+**NOTE**
+You will need to be able to run docker commands without sudo to run this tutorial. Use the following commands to do this.
+
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+``` 
+---
+
 The tutorial was developed on an [Azure Ubuntu
 DSVM](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro),
 which addresses the first three prerequisites.
@@ -54,6 +64,8 @@ pip install cookiecutter
    Please make sure all entered information are correct, as these information are used to customize the content of your repo. 
 
 4. On your local machine, you should now have a repo with the *project_name* you specified. Find the README.md file in this repo and proceed with instructions specified in it. 
+
+
 
 # Contributing
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
