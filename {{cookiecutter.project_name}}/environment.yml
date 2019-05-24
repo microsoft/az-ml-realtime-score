@@ -20,3 +20,4 @@ dependencies:
     - papermill>=0.14.1
     - python-dotenv==0.10.1
     - azureml-sdk[notebooks]
+    - locustio==0.11.0
