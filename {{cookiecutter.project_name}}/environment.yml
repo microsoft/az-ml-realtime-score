@@ -20,3 +20,4 @@ dependencies:
     - papermill>=0.14.1
     - python-dotenv==0.10.1
     - azureml-sdk[notebooks]==1.0.33
+    - git+https://github.com/marabout2015/StatisticsTracker.git
