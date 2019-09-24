@@ -19,5 +19,5 @@ dependencies:
     - lightgbm>=2.1.2
     - papermill>=0.14.1
     - python-dotenv==0.10.1
-    - azureml-sdk[notebooks]==1.0.33
+    - azureml-sdk[notebooks]==1.0.57
     - git+https://github.com/grecoe/StatisticsTracker.git
