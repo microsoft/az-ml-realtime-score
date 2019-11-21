@@ -4,7 +4,6 @@ resources:
     - repository: aitemplates
       type: github
       name: microsoft/AI
-      endpoint: microsoft
 
 variables:
   BuildConfiguration: Release
