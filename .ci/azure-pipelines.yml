@@ -32,8 +32,6 @@ jobs:
 - job: build_deploy_ai
   displayName: 'Build deploy AI'
 
-  pool:
-    name: $(Agent)
   strategy:
     maxParallel: 8
     matrix: $[ dependencies.build_relayer_sources.outputs['GenDeployMatrix.DeployRegions'] ]
