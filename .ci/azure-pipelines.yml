@@ -34,7 +34,6 @@ jobs:
 
   pool:
     name: $(Agent)
-    demands: USA
   strategy:
     maxParallel: 8
     matrix: $[ dependencies.build_relayer_sources.outputs['GenDeployMatrix.DeployRegions'] ]
