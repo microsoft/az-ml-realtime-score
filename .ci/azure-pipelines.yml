@@ -71,7 +71,7 @@ jobs:
     parameters:
       deployment_name: MLBatchDeployAMLJob
       template: MLBatchDeployAMLJob.yml
-      azureSubscription: AG-AzureCAT-AIDevOps-Test-COGSNonProd-IO1685734 (0ca618d2-22a8-413a-96d0-0f1b531129c3)
+      azureSubscription: AG-AzureCAT-AIDevOps-Test-COGSNonProd-IO1685734
       azure_subscription: 0ca618d2-22a8-413a-96d0-0f1b531129c3
       azureresourcegroup: $(AIResourceGroupName)
       workspacename: $(TridentWorkloadTypeShort)-$(DeployLocation)
