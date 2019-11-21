@@ -28,9 +28,6 @@ trigger:
 jobs:
 - job: build_deploy_ai
   displayName: 'Build deploy AI'
-  dependsOn:
-  - build_relayer_sources
-  condition: succeeded('build_relayer_sources')
 
   pool:
     name: AI-GPU
