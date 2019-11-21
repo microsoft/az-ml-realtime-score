@@ -18,6 +18,9 @@ variables:
   TridentWorkloadType: $(WorkloadType)
   TridentWorkloadTypeShort: $(WorkloadTypeShort)
   DeployLocations: eastus
+  Agent: agce-ai
+  azureSubscription: AG-AzureCAT-AIDevOps-Test-COGSNonProd-IO1685734(0ca618d2-22a8-413a-96d0-0f1b531129c3)
+  azure_subscription: 0ca618d2-22a8-413a-96d0-0f1b531129c3
 
 trigger:
   batch: true
@@ -30,7 +33,7 @@ jobs:
   displayName: 'Build deploy AI'
 
   pool:
-    name: AI-GPU
+    name: $(Agent)
     demands: USA
   strategy:
     maxParallel: 8
@@ -71,8 +74,8 @@ jobs:
     parameters:
       deployment_name: MLBatchDeployAMLJob
       template: MLBatchDeployAMLJob.yml
-      azureSubscription: AG-AzureCAT-AIDevOps-Test-COGSNonProd-IO1685734(0ca618d2-22a8-413a-96d0-0f1b531129c3)
-      azure_subscription: 0ca618d2-22a8-413a-96d0-0f1b531129c3
+      azureSubscription: $(azureSubscription)
+      azure_subscription: $(azure_subscription)
       azureresourcegroup: $(AIResourceGroupName)
       workspacename: $(TridentWorkloadTypeShort)-$(DeployLocation)
       azureregion: $(DeployLocation)
