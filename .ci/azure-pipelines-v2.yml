@@ -51,7 +51,7 @@ jobs:
   steps:
 
   #
-  # DL Workload Deployment
+  # ML RTS - Workload Deployment
   #
     # use the ML team templates to build and deploy workloads for each region
   - script: |
