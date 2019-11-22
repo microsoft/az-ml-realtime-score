@@ -16,6 +16,7 @@ variables:
   TestPostfix: ""
   DeploymentName: MLAKSDeployAMLJob
   PythonPath: "/{{cokiecutter.project_name"
+  Agent: "Hosted Ubuntu 1604"
 
 # In additional to the above variables, the "template" parameter of the last step must also be hard coded for each workload
 
@@ -65,7 +66,7 @@ jobs:
       doCleanup: False
       alias: $(Build.QueuedBy)
       project: $(TridentWorkloadTypeShort)
-      agent: "Hosted Ubuntu 1604"
+      agent: $(Agent)
       ENVIRONMENT_PREFIX: $(EnvironmentPrefix)
       deploymentguidtag: $(DeploymentGuidTag)
       aks_name: $(TridentWorkloadTypeShort)$(Deploy_Location_Short)
