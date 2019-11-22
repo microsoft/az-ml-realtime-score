@@ -15,7 +15,8 @@ variables:
   azure_subscription: 0ca618d2-22a8-413a-96d0-0f1b531129c3
   TestPostfix: ""
   DeploymentName: MLAKSDeployAMLJob
-  PythonPath: "/{{cokiecutter.project_name}}"
+  ProjectLocation: {{cookiecutter.project_name}}
+  PythonPath: /$(ProjectLocation)
   Agent: "Hosted Ubuntu 1604"
 
 # In additional to the above variables, the "template" parameter of the last step must also be hard coded for each workload
@@ -71,5 +72,5 @@ jobs:
       deploymentguidtag: $(DeploymentGuidTag)
       aks_name: $(TridentWorkloadTypeShort)$(Deploy_Location_Short)
       python_path: $(System.DefaultWorkingDirectory)$(PythonPath)
-      location: "{{cokiecutter.project_name}}"
+      location: $(ProjectLocation)
       python_secret_root: "./"
