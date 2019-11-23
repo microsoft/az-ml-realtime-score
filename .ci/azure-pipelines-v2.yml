@@ -21,6 +21,7 @@ variables:
 
 # In additional to the above variables, the "template" parameter of the last step must also be hard coded for each workload
 
+
 trigger:
   batch: true
   branches:
@@ -57,6 +58,7 @@ jobs:
     parameters:
       deployment_name: $(DeploymentName)
       template: MLAKSDeployAMLJob.yml
+
       azureSubscription: $(azureSubscription)
       azure_subscription: $(azure_subscription)
       azureresourcegroup: $(AIResourceGroupName)

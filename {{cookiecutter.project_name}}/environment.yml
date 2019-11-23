@@ -21,3 +21,4 @@ dependencies:
     - python-dotenv==0.10.1
     - azureml-sdk[notebooks]==1.0.57
     - git+https://github.com/Microsoft/StatisticsTracker.git
+    - locustio==0.11.0
