@@ -86,8 +86,8 @@ jobs:
       associate: true
       linkWorkItems: true
       linkTarget: 'id'
-      targetId: '20850'
-      
+      linkType: Parent
+      targetId: '20850'      
       fieldMappings: |
         Description=Branch: Branch $(Build.SourceBranch) failed to 
     condition: failed()
