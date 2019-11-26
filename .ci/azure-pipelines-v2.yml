@@ -49,9 +49,8 @@ jobs:
 
   - template: .ci/steps/cleanuptask.yml@aitemplates
     parameters:
-      azureSubscription: ${{parameters.azureSubscription}}
-      conda: ${{parameters.conda}}
-      azureresourcegroup: ${{parameters.azureresourcegroup}}
+      azureSubscription: $(azureSubscription)
+      azureresourcegroup: $(azureresourcegroup)
       doCleanup: True
 
   - template: .ci/steps/docker_clean.yml@aitemplates
