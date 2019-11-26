@@ -76,3 +76,18 @@ jobs:
       python_path: $(System.DefaultWorkingDirectory)$(PythonPath)
       location: $(ProjectLocation)
       python_secret_root: "./"
+
+  - task: CreateWorkItem@1
+    inputs:
+      teamProject: $(System.TeamProject)
+      workItemType: 'Bug'
+      title: AI ML RTS Build $(Build.BuildNumber) Failed
+      areaPath: 'Azure Global CAT Engineering\AGCE AI\WorkStreams\AI E2E\Test Harness Integration'
+      associate: true
+      linkWorkItems: true
+      linkTarget: 'id'
+      targetId: '20850'
+      
+      fieldMappings: |
+        Description=Branch: Branch $(Build.SourceBranch) failed to 
+    condition: failed()
