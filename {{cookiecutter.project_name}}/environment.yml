@@ -20,6 +20,6 @@ dependencies:
     - lightgbm
     - papermill
     - python-dotenv
-    - azureml-sdk[notebooks]
+    - azureml-sdk[notebooks]=1.0.57
     - locustio
     - git+https://github.com/microsoft/AI-Utilities.git    
