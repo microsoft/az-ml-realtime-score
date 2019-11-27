@@ -1,6 +1,13 @@
 # ML Realtime Scoring Pipeline
 #
 # A Github Service Connection must also be created with the name "AIArchitecturesAndPractices-GitHub"
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/process/demands?view=azure-devops&tabs=yaml
+#
+# An Agent_Name Variable must be creating in the Azure DevOps UI. 
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#secret-variables
+#
+# This must point to an Agent Pool, with a Self-Hosted Linux VM with a DOcker.
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/v2-linux?view=azure-devops
 
 resources:
   repositories:
@@ -24,6 +31,7 @@ pr:
 stages:
 - template: .ci/stages/deploy_notebooks_stages_v2.yml@aitemplates
   parameters:
+    Agent: $(Agent_Name)
     jobDisplayName: MLAKSDeployAMLJob
     DefaultWorkingDirectory: $(System.DefaultWorkingDirectory)
     workload_vars: ../vars/ml_realtime_scoring.yml
