@@ -3,22 +3,23 @@ channels:
   - conda-forge
 dependencies:
   - python=3.6.2
+  - pip
   - tornado<6
-  - nb_conda_kernels==2.1.0
-  - ipywidgets==7.3.0
-  - pandas>=0.23.3
-  - scikit-learn>=0.19.1
-  - pip:
-    - urllib3==1.23
-    - aiohttp>=3.3.2
-    - nest_asyncio>=0.9.10
-    - toolz>=0.9.0
-    - tqdm>=4.23.4
-    - azure-cli==2.0.63
-    - prompt_toolkit>=2.0.7
-    - lightgbm>=2.1.2
-    - papermill>=0.14.1
-    - python-dotenv==0.10.1
+  - nb_conda_kernels
+  - ipywidgets
+  - pandas
+  - scikit-learn
+  - urllib3
+  - pip:    
+    - aiohttp
+    - nest_asyncio
+    - toolz
+    - tqdm
+    - azure-cli
+    - prompt_toolkit
+    - lightgbm
+    - papermill
+    - python-dotenv
     - azureml-sdk[notebooks]==1.0.57
-    - git+https://github.com/Microsoft/StatisticsTracker.git
-    - locustio==0.11.0
+    - locustio
+    - git+https://github.com/microsoft/AI-Utilities.git    
