@@ -1,5 +1,5 @@
 ![](https://dev.azure.com/customai/MLAKSDeployAMLPipeline/_apis/build/status/Microsoft.MLAKSDeployAML%20(master)?branchName=master)
-
+[![Build Status](https://dev.azure.com/AZGlobal/Azure%20Global%20CAT%20Engineering/_apis/build/status/AGCE%20AI/Happy%20Path%20Builds/AI%20ML%20RTS?branchName=master)](https://dev.azure.com/AZGlobal/Azure%20Global%20CAT%20Engineering/_build/latest?definitionId=118&branchName=master)
 ### Authors: Fidan Boylu Uz, Yan Zhang
 ### Acknowledgements: Mario Bourgoin, Mathew Salvaris
 
