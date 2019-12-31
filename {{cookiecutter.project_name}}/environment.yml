@@ -21,5 +21,6 @@ dependencies:
     - papermill
     - python-dotenv
     - azureml-sdk[notebooks]==1.0.57
+    - azure-core
     - locustio
     - git+https://github.com/microsoft/AI-Utilities.git    
