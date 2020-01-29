@@ -15,8 +15,14 @@ jobs:
 - job: MLAKSDeployAMLJob
   timeoutInMinutes: 300
   cancelTimeoutInMinutes: 2
+
   pool:
     vmImage: 'Ubuntu-16.04'
+
+  strategy:
+    maxParallel: 3
+    matrix: {"eastus": {"azureregion": "eastus", "azureresourcegroup" : "mlaksdplyamleastus"},"southcentralus": {"azureregion": "southcentralus", "azureresourcegroup" : "mlaksdplyamlsouthctrl" },"westus2": {"azureregion": "westus2", "azureresourcegroup" : "mlaksdplyamlwestus"}}
+
   steps:
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
