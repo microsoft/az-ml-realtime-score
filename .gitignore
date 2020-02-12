@@ -1,4 +1,7 @@
 
+# Project Configuration Files
+workspace_conf.yml
+
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc

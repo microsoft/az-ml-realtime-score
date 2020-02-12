@@ -1,4 +1,4 @@
-name: MLAKSDeployAML
+name: az-ml-realtime-score
 channels:
   - conda-forge
 dependencies:
@@ -9,8 +9,9 @@ dependencies:
   - ipywidgets
   - pandas
   - scikit-learn
+  - jupyter
   - urllib3
-  - pip:    
+  - pip:
     - aiohttp
     - nest_asyncio
     - toolz
@@ -23,4 +24,4 @@ dependencies:
     - azureml-core==1.0.57
     - azure-core
     - locustio
-    - git+https://github.com/microsoft/AI-Utilities.git    
+    - git+https://github.com/microsoft/AI-Utilities.git@version/0.2.0
