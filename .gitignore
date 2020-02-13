@@ -1,3 +1,10 @@
+
+# Project Configuration Files
+workspace_conf.yml
+*.output_ipynb
+.azureml
+pylint-results.xml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
