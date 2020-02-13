@@ -1,15 +1,27 @@
-[![Build Status](https://dev.azure.com/AZGlobal/Azure%20Global%20CAT%20Engineering/_apis/build/status/AGCE%20AI/Happy%20Path%20Builds/ai-architecture-template?branchName=master)](https://dev.azure.com/AZGlobal/Azure%20Global%20CAT%20Engineering/_build/latest?definitionId=170&branchName=master)
-TODO: Insert Build Badge Here
-### Authors: <>
-### Acknowledgements: <>
+[![Build Status](https://dev.azure.com/AZGlobal/Azure%20Global%20CAT%20Engineering/_apis/build/status/AGCE%20AI/Happy%20Path%20Builds/AI%20ML%20RTS?branchName=master)](https://dev.azure.com/AZGlobal/Azure%20Global%20CAT%20Engineering/_build/latest?definitionId=118&branchName=master)
+### Authors: Fidan Boylu Uz, Yan Zhang
+### Acknowledgements: Mario Bourgoin, Mathew Salvaris
 
-# AI Architecture Template
+# Deploying Python models for real-time scoring using Azure Machine Learning
+
+In this repository there are a number of tutorials in Jupyter notebooks that have step-by-step instructions on (1) how to train a machine learning model using Python; (2) how to deploy a trained machine learning model throught Azure Machine Learning (AzureML). The tutorials cover how to deploy models on following deployment target:
+
+- [Azure Kubernetes Service (AKS) Cluster](notebooks/aks)
+- [Azure IoT Edge](notebooks/iotedge)
 
 ## Overview
-TODO: Insert Overview Here
+This scenario shows how to deploy a Frequently Asked Questions (FAQ) matching model as a web service to provide predictions for user questions. For this scenario, “Input Data” in the [architecture diagram](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/ai/realtime-scoring-python) refers to text strings containing the user questions to match with a list of FAQs. The scenario is designed for the Scikit-Learn machine learning library for Python but can be generalized to any scenario that uses Python models to make real-time predictions.
 
 ## Design
-TODO: Insert Design Here
+<!-- ![alt text](Design.png "Design") -->
+The scenario uses a subset of Stack Overflow question data which includes original questions tagged as JavaScript, their duplicate questions, and their answers. It trains a Scikit-Learn pipeline to predict the match probability of a duplicate question with each of the original questions. These predictions are made in real time using a REST API endpoint.
+The application flow for this architecture is as follows:
+1.	The client sends a HTTP POST request with the encoded question data.
+2.	The  webservice extracts the question from the request
+3.	The question is then sent to the Scikit-learn pipeline model for featurization and scoring. 
+4.	The matching FAQ questions with their scores are then piped into a JSON object and returned to the client.
+
+An example app that consumes the results is included with the scenario.
 
 ## Prerequisites
 1. Linux (Ubuntu).
@@ -44,19 +56,19 @@ To set up your environment to run these notebooks, please follow these steps.  T
 1. Open a terminal emulator.
 1. Clone, fork, or download the zip file for this repository:
    ```
-   git clone https://github.com/Microsoft/ai-architecture-template.git
+   git clone https://github.com/Microsoft/az-ml-realtime-score.git
    ```
 1. Enter the local repository:
    ```
-   cd ai-architecture-template
+   cd az-ml-realtime-score
    ```
-1. Create the Python ai-architecture-template virtual environment using the environment.yml:
+1. Create the Python MLAKSDeployAML virtual environment using the environment.yml:
    ```
    conda env create -f environment.yml
    ```
 1. Activate the virtual environment:
    ```
-   source activate ai-architecture-template
+   source activate az-ml-realtime-score
    ```
    The remaining steps should be done in this virtual environment.
 1. Login to Azure:

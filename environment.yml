@@ -1,4 +1,4 @@
-name: ai-architecture-template
+name: az-ml-realtime-score
 channels:
   - conda-forge
 dependencies:
