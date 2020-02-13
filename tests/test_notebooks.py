@@ -6,6 +6,8 @@ Licensed under the MIT License.
 """
 import papermill as pm
 from azure_utils.machine_learning.utils import load_configuration
+from junit_xml import TestSuite, TestCase
+
 
 
 def test_00_aml_configuration():
@@ -20,10 +22,29 @@ def test_00_aml_configuration():
         'notebooks/00_AMLConfiguration.ipynb',
         'notebooks/00_AMLConfiguration.output_ipynb',
         parameters=dict(subscription_id=subscription_id, resource_group=resource_group, workspace_name=workspace_name,
-                        workspace_region=workspace_region),
-        kernel_name="ai-architecture-template"
+                        workspace_region=workspace_region), kernel_name="ai-architecture-template"
     )
 
     for cell in results.cells:
         if cell.cell_type is "code":
             assert not cell.metadata.papermill.exception, "Error in Python Notebook"
+
+    regex = r'Deployed (.*) with name (.*). Took (.*) seconds.'
+
+    with open('notebooks/00_AMLConfiguration.output_ipynb', 'r') as file:
+        data = file.read()
+
+        import re
+        searchObj = re.findall(regex, data)
+
+        test_cases = []
+
+        for group in searchObj:
+            test_cases.append(
+                TestCase(name=group[0] + " creation", classname='00_AMLConfiguration', elapsed_sec=float(group[2]),
+                         status="Success"))
+
+        ts = TestSuite("my test suite", test_cases)
+
+        with open('test-timing-output.xml', 'w') as f:
+            TestSuite.to_file(f, [ts], prettyprint=False)

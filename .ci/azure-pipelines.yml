@@ -16,6 +16,14 @@ resources:
       name: microsoft/AI
       endpoint: AIArchitecturesAndPractices-GitHub
 
+schedules:
+- cron: "*/10 * * * *"
+  displayName: Daily midnight build
+  always: true
+  branches:
+    include:
+    - master
+
 trigger:
   batch: true
   branches:
