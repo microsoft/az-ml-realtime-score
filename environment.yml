@@ -8,6 +8,7 @@ dependencies:
   - pytest
   - pytest-cov
   - pylint
+  - pandas
   - pip:
     - papermill
     - azureml-core
