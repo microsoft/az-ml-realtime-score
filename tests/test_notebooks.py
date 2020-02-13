@@ -23,7 +23,7 @@ def test_00_aml_configuration():
         'notebooks/00_AMLConfiguration.ipynb',
         'notebooks/00_AMLConfiguration.output_ipynb',
         parameters=dict(subscription_id=subscription_id, resource_group=resource_group, workspace_name=workspace_name,
-                        workspace_region=workspace_region), kernel_name="ai-architecture-template"
+                        workspace_region=workspace_region), kernel_name="az-ml-realtime-score"
     )
 
     for cell in results.cells:
