@@ -1,0 +1,16 @@
+name: ai-architecture-template
+channels:
+  - conda-forge
+dependencies:
+  - python=3.6.2
+  - pip
+  - jupyter
+  - pytest
+  - pytest-cov
+  - pylint
+  - pip:
+    - papermill
+    - azureml-core
+    - pylint-junit
+    - junit-xml
+    - Microsoft-AI-Azure-Utilities==0.2.0
