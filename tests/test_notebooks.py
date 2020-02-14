@@ -5,6 +5,7 @@ Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the MIT License.
 """
 import re
+import sys
 
 import papermill as pm
 from azure_utils.machine_learning.utils import load_configuration
@@ -28,6 +29,7 @@ def test_00_aml_configuration(record_nunit_property, add_nunit_attachment):
 
     with open('notebooks/00_AMLConfiguration.output_ipynb', 'r') as file:
         data = file.read()
+        sys.stderr.write(data)
 
         test_cases = []
         for group in re.findall(regex, data):
