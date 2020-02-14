@@ -25,10 +25,6 @@ def test_00_aml_configuration():
 
     run_notebook('00_AMLConfiguration.ipynb', '00_AMLConfiguration.output_ipynb', parameters)
 
-    path = os.path.dirname(os.path.abspath(__file__))
-
-    os.chdir("notebooks")
-
     regex = r'Deployed (.*) with name (.*). Took (.*) seconds.'
 
     with open('notebooks/00_AMLConfiguration.output_ipynb', 'r') as file:
@@ -44,8 +40,6 @@ def test_00_aml_configuration():
 
         with open('test-timing-output.xml', 'w') as f:
             TestSuite.to_file(f, [ts], prettyprint=False)
-
-    os.chdir(path)
 
 
 def test_01_aml_configuration():
