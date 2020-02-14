@@ -32,7 +32,9 @@ def test_00_aml_configuration(record_nunit_property, add_nunit_attachment):
 
         test_cases = []
         for group in re.findall(regex, data):
-            record_nunit_property("test", "value")
+            record_nunit_property(group[0] + " creation outcome", "Success")
+            record_nunit_property(group[0] + " name", group[1])
+            record_nunit_property(group[0] + " creation duration", float(group[2]))
             test_cases.append(
                 TestCase(name=group[0] + " creation", classname='00_AMLConfiguration', elapsed_sec=float(group[2]),
                          status="Success"))
