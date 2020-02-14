@@ -23,7 +23,7 @@ def test_00_aml_configuration():
     parameters = dict(subscription_id=subscription_id, resource_group=resource_group, workspace_name=workspace_name,
                       workspace_region=workspace_region)
 
-    run_notebook('notebooks/00_AMLConfiguration.ipynb', 'notebooks/00_AMLConfiguration.output_ipynb', parameters)
+    run_notebook('00_AMLConfiguration.ipynb', '00_AMLConfiguration.output_ipynb', parameters)
 
     path = os.path.dirname(os.path.abspath(__file__))
 
