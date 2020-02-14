@@ -26,10 +26,8 @@ def test_00_aml_configuration():
     run_notebook('00_AMLConfiguration.ipynb', '00_AMLConfiguration.output_ipynb', parameters)
 
     path = os.path.dirname(os.path.abspath(__file__))
-    if "test" in os.path.dirname(os.path.abspath(__file__)):
-        os.chdir("../notebooks")
-    elif "notebooks" not in os.path.dirname(os.path.abspath(__file__)):
-        os.chdir("notebooks")
+
+    os.chdir("notebooks")
 
     regex = r'Deployed (.*) with name (.*). Took (.*) seconds.'
 
@@ -89,10 +87,8 @@ def run_notebook(input_notebook, output_notebook, parameters=None):
     parameters : Optional Parameters to pass to papermill
     """
     path = os.path.dirname(os.path.abspath(__file__))
-    if "test" in os.path.dirname(os.path.abspath(__file__)):
-        os.chdir("../notebooks")
-    elif "notebooks" not in os.path.dirname(os.path.abspath(__file__)):
-        os.chdir("notebooks")
+
+    os.chdir("notebooks")
 
     results = pm.execute_notebook(
         input_notebook,
