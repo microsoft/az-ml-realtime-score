@@ -17,37 +17,34 @@ def test_00_aml_configuration(add_nunit_attachment):
 
 
 def test_01_aml_configuration(add_nunit_attachment):
-    run_notebook('01_DataPrep.ipynb', '01_DataPrep.output_ipynb', add_nunit_attachment=add_nunit_attachment)
+    run_notebook('01_DataPrep.ipynb', '01_DataPrep.output_ipynb', add_nunit_attachment)
 
 
 def test_02_aml_configuration(add_nunit_attachment):
-    run_notebook('02_TrainOnLocal.ipynb', '02_TrainOnLocal.output_ipynb', add_nunit_attachment=add_nunit_attachment)
+    run_notebook('02_TrainOnLocal.ipynb', '02_TrainOnLocal.output_ipynb', add_nunit_attachment)
 
 
 def test_03_aml_configuration(add_nunit_attachment):
-    run_notebook('03_DevelopScoringScript.ipynb', '03_DevelopScoringScript.output_ipynb',
-                 add_nunit_attachment=add_nunit_attachment)
+    run_notebook('03_DevelopScoringScript.ipynb', '03_DevelopScoringScript.output_ipynb', add_nunit_attachment)
 
 
 def test_04_aml_configuration(add_nunit_attachment):
-    run_notebook('04_CreateImage.ipynb', '04_CreateImage.output_ipynb', add_nunit_attachment=add_nunit_attachment)
+    run_notebook('04_CreateImage.ipynb', '04_CreateImage.output_ipynb', add_nunit_attachment)
 
 
 def test_05_aml_configuration(add_nunit_attachment):
-    run_notebook('05_DeployOnAKS.ipynb', '05_DeployOnAKS.output_ipynb', add_nunit_attachment=add_nunit_attachment)
+    run_notebook('05_DeployOnAKS.ipynb', '05_DeployOnAKS.output_ipynb', add_nunit_attachment)
 
 
 def test_06_aml_configuration(add_nunit_attachment):
-    run_notebook('06_SpeedTestWebApp.ipynb', '06_SpeedTestWebApp.output_ipynb',
-                 add_nunit_attachment=add_nunit_attachment)
+    run_notebook('06_SpeedTestWebApp.ipynb', '06_SpeedTestWebApp.output_ipynb', add_nunit_attachment)
 
 
 def test_07_aml_configuration(add_nunit_attachment):
-    run_notebook('07_RealTimeScoring.ipynb', '07_RealTimeScoring.output_ipynb',
-                 add_nunit_attachment=add_nunit_attachment)
+    run_notebook('07_RealTimeScoring.ipynb', '07_RealTimeScoring.output_ipynb', add_nunit_attachment)
 
 
-def run_notebook(input_notebook, output_notebook, parameters=None, add_nunit_attachment=None):
+def run_notebook(input_notebook, output_notebook, add_nunit_attachment, parameters=None):
     """
     Used to run a notebook in the correct directory.
 
