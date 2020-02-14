@@ -80,13 +80,10 @@ To set up your environment to run these notebooks, please follow these steps.  T
    ```
    az account show -o table
    ```
-1. If you have more than one Azure subscription, select it:
-   ```
-   az account set --subscription <Your Azure Subscription>
-   ```
 1. Start the Jupyter notebook server:
-	```
-	jupyter notebook
+   ```
+   jupyter notebook
+   ```
 
 # Contributing
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
