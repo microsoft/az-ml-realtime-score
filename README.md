@@ -48,7 +48,6 @@ which addresses the first three prerequisites.
 To set up your environment to run these notebooks, please follow these steps.  They setup the notebooks to use Azure seamlessly.
 
 1. Create a _Linux_ _Ubuntu_ VM.
-1. Copy `sample_workspace_conf.yml` to a new file, `workspace_conf.yml`, and fill in each field. This will keep secrets out of the source code, and this file will be ignored by git.
 1. Log in to your VM.  We recommend that you use a graphical client
    such as
    [X2Go](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro#x2go)
@@ -62,6 +61,7 @@ To set up your environment to run these notebooks, please follow these steps.  T
    ```
    cd az-ml-realtime-score
    ```
+1. Copy `sample_workspace_conf.yml` to a new file, `workspace_conf.yml`, and fill in each field. This will keep secrets out of the source code, and this file will be ignored by git.
 1. Create the Python MLAKSDeployAML virtual environment using the environment.yml:
    ```
    conda env create -f environment.yml
