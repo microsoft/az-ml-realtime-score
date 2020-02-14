@@ -23,7 +23,7 @@ def test_00_aml_configuration():
     parameters = dict(subscription_id=subscription_id, resource_group=resource_group, workspace_name=workspace_name,
                       workspace_region=workspace_region)
 
-    run_notebook('00_AMLConfiguration.ipynb', '00_AMLConfiguration.output_ipynb', parameters)
+    run_notebook('notebooks/00_AMLConfiguration.ipynb', 'notebooks/00_AMLConfiguration.output_ipynb', parameters)
 
     path = os.path.dirname(os.path.abspath(__file__))
 
@@ -31,7 +31,7 @@ def test_00_aml_configuration():
 
     regex = r'Deployed (.*) with name (.*). Took (.*) seconds.'
 
-    with open('00_AMLConfiguration.output_ipynb', 'r') as file:
+    with open('notebooks/00_AMLConfiguration.output_ipynb', 'r') as file:
         data = file.read()
 
         test_cases = []
@@ -86,13 +86,10 @@ def run_notebook(input_notebook, output_notebook, parameters=None):
     output_notebook : Name of Test Notebook Output
     parameters : Optional Parameters to pass to papermill
     """
-    path = os.path.dirname(os.path.abspath(__file__))
-
-    os.chdir("notebooks")
 
     results = pm.execute_notebook(
-        input_notebook,
-        output_notebook,
+        "notebooks/" + input_notebook,
+        "notebooks/" + output_notebook,
         parameters=parameters,
         kernel_name="az-ml-realtime-score"
     )
@@ -100,5 +97,3 @@ def run_notebook(input_notebook, output_notebook, parameters=None):
     for cell in results.cells:
         if cell.cell_type is "code":
             assert not cell.metadata.papermill.exception, "Error in Python Notebook"
-
-    os.chdir(path)
