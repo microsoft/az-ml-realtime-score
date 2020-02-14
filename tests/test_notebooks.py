@@ -58,6 +58,26 @@ def test_02_aml_configuration():
     run_notebook('02_TrainOnLocal.ipynb', '02_TrainOnLocal.output_ipynb')
 
 
+def test_03_aml_configuration():
+    run_notebook('03_DevelopScoringScript.ipynb', '03_DevelopScoringScript.output_ipynb')
+
+
+def test_04_aml_configuration():
+    run_notebook('04_CreateImage.ipynb', '04_CreateImage.output_ipynb')
+
+
+def test_05_aml_configuration():
+    run_notebook('05_DeployOnAKS.ipynb', '05_DeployOnAKS.output_ipynb')
+
+
+def test_06_aml_configuration():
+    run_notebook('06_SpeedTestWebApp.ipynb', '06_SpeedTestWebApp.output_ipynb')
+
+
+def test_07_aml_configuration():
+    run_notebook('07_RealTimeScoring.ipynb', '07_RealTimeScoring.output_ipynb')
+
+
 def run_notebook(input_notebook, output_notebook, parameters=None):
     """
     Used to run a notebook in the correct directory.
