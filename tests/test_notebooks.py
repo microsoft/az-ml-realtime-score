@@ -13,7 +13,7 @@ from azure_utils.machine_learning.utils import load_configuration
 from junit_xml import TestSuite, TestCase
 
 
-def test_00_aml_configuration(record_nunit_property, add_nunit_attachment):
+def test_00_aml_configuration(add_nunit_attachment):
     cfg = load_configuration("../workspace_conf.yml")
 
     subscription_id = cfg['subscription_id']
@@ -25,26 +25,6 @@ def test_00_aml_configuration(record_nunit_property, add_nunit_attachment):
                       workspace_region=workspace_region)
 
     run_notebook('00_AMLConfiguration.ipynb', '00_AMLConfiguration.output_ipynb', parameters, add_nunit_attachment)
-
-    regex = r'Deployed (.*) with name (.*). Took (.*) seconds.'
-
-    with open('notebooks/00_AMLConfiguration.output_ipynb', 'r') as file:
-        data = file.read()
-        sys.stderr.write(data)
-
-        test_cases = []
-        for group in re.findall(regex, data):
-            record_nunit_property(group[0] + " creation outcome", "Success")
-            record_nunit_property(group[0] + " name", group[1])
-            record_nunit_property(group[0] + " creation duration", float(group[2]))
-            test_cases.append(
-                TestCase(name=group[0] + " creation", classname='00_AMLConfiguration', elapsed_sec=float(group[2]),
-                         status="Success"))
-
-        ts = TestSuite("my test suite", test_cases)
-
-        with open('test-timing-output.xml', 'w') as f:
-            TestSuite.to_file(f, [ts], prettyprint=False)
 
 
 def test_01_aml_configuration(add_nunit_attachment):
@@ -110,8 +90,25 @@ def run_notebook(input_notebook, output_notebook, parameters=None, add_nunit_att
         markdown_exporter.template_file = 'basic'
         (body, resources) = markdown_exporter.from_notebook_node(jupyter_output)
         with open(output_notebook.replace(".output_ipynb", ".md"), "w") as text_file:
+            sys.stderr.write(body)
             text_file.write(body)
 
         if add_nunit_attachment is not None:
             path = os.path.join(os.path.abspath('notebooks/'), output_notebook.replace(".output_ipynb", ".md"))
             add_nunit_attachment(path, output_notebook)
+
+        regex = r'Deployed (.*) with name (.*). Took (.*) seconds.'
+
+        with open('notebooks/' + output_notebook, 'r') as file:
+            data = file.read()
+
+            test_cases = []
+            for group in re.findall(regex, data):
+                test_cases.append(
+                    TestCase(name=group[0] + " creation", classname='00_AMLConfiguration', elapsed_sec=float(group[2]),
+                             status="Success"))
+
+            ts = TestSuite("my test suite", test_cases)
+
+            with open('test-timing-output.xml', 'w') as f:
+                TestSuite.to_file(f, [ts], prettyprint=False)
