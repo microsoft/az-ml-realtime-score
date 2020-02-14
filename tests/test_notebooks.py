@@ -102,6 +102,16 @@ def run_notebook(input_notebook, output_notebook, parameters=None, add_nunit_att
             if cell.cell_type is "code":
                 assert not cell.metadata.papermill.exception, "Error in Python Notebook"
     finally:
+        import nbformat
+        jupyter_output = nbformat.reads("notebooks/" + output_notebook, as_version=nbformat.NO_CONVERT)
+
+        from nbconvert import MarkdownExporter
+        markdown_exporter = MarkdownExporter()
+        markdown_exporter.template_file = 'basic'
+        (body, resources) = markdown_exporter.from_notebook_node(jupyter_output)
+        with open(output_notebook.replace(".output_ipynb", ".md"), "w") as text_file:
+            text_file.write(body)
+
         if add_nunit_attachment is not None:
-            path = os.path.join(os.path.abspath('notebooks/'), output_notebook)
+            path = os.path.join(os.path.abspath('notebooks/'), output_notebook.replace(".output_ipynb", ".md"))
             add_nunit_attachment(path, output_notebook)
