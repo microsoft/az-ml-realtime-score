@@ -9,22 +9,11 @@ import re
 import sys
 
 import papermill as pm
-from azure_utils.machine_learning.utils import load_configuration
 from junit_xml import TestSuite, TestCase
 
 
 def test_00_aml_configuration(add_nunit_attachment):
-    cfg = load_configuration("../workspace_conf.yml")
-
-    subscription_id = cfg['subscription_id']
-    resource_group = cfg['resource_group']
-    workspace_name = cfg['workspace_name']
-    workspace_region = cfg['workspace_region']
-
-    parameters = dict(subscription_id=subscription_id, resource_group=resource_group, workspace_name=workspace_name,
-                      workspace_region=workspace_region)
-
-    run_notebook('00_AMLConfiguration.ipynb', '00_AMLConfiguration.output_ipynb', parameters, add_nunit_attachment)
+    run_notebook('00_AMLConfiguration.ipynb', '00_AMLConfiguration.output_ipynb', add_nunit_attachment)
 
 
 def test_01_aml_configuration(add_nunit_attachment):
