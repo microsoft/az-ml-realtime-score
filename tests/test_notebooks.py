@@ -4,8 +4,8 @@ ai-architecture-template - test_notebooks.py
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the MIT License.
 """
-import re
 import os
+import re
 
 import papermill as pm
 from azure_utils.machine_learning.utils import load_configuration
@@ -49,6 +49,7 @@ def test_00_aml_configuration():
 
     os.chdir(path)
 
+
 def test_01_aml_configuration():
     run_notebook('01_DataPrep.ipynb', '01_DataPrep.output_ipynb')
 
@@ -58,6 +59,15 @@ def test_02_aml_configuration():
 
 
 def run_notebook(input_notebook, output_notebook, parameters=None):
+    """
+    Used to run a notebook in the correct directory.
+
+    Parameters
+    ----------
+    input_notebook : Name of Notebook to Test
+    output_notebook : Name of Test Notebook Output
+    parameters : Optional Parameters to pass to papermill
+    """
     path = os.path.dirname(os.path.abspath(__file__))
     if "test" in os.path.dirname(os.path.abspath(__file__)):
         os.chdir("../notebooks")
