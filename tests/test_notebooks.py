@@ -25,15 +25,9 @@ def test_00_aml_configuration():
 
     run_notebook('00_AMLConfiguration.ipynb', '00_AMLConfiguration.output_ipynb', parameters)
 
-    path = os.path.dirname(os.path.abspath(__file__))
-    if "test" in os.path.dirname(os.path.abspath(__file__)):
-        os.chdir("../notebooks")
-    elif "notebooks" not in os.path.dirname(os.path.abspath(__file__)):
-        os.chdir("notebooks")
-
     regex = r'Deployed (.*) with name (.*). Took (.*) seconds.'
 
-    with open('00_AMLConfiguration.output_ipynb', 'r') as file:
+    with open('notebooks/00_AMLConfiguration.output_ipynb', 'r') as file:
         data = file.read()
 
         test_cases = []
@@ -47,8 +41,6 @@ def test_00_aml_configuration():
         with open('test-timing-output.xml', 'w') as f:
             TestSuite.to_file(f, [ts], prettyprint=False)
 
-    os.chdir(path)
-
 
 def test_01_aml_configuration():
     run_notebook('01_DataPrep.ipynb', '01_DataPrep.output_ipynb')
@@ -56,6 +48,26 @@ def test_01_aml_configuration():
 
 def test_02_aml_configuration():
     run_notebook('02_TrainOnLocal.ipynb', '02_TrainOnLocal.output_ipynb')
+
+
+def test_03_aml_configuration():
+    run_notebook('03_DevelopScoringScript.ipynb', '03_DevelopScoringScript.output_ipynb')
+
+
+def test_04_aml_configuration():
+    run_notebook('04_CreateImage.ipynb', '04_CreateImage.output_ipynb')
+
+
+def test_05_aml_configuration():
+    run_notebook('05_DeployOnAKS.ipynb', '05_DeployOnAKS.output_ipynb')
+
+
+def test_06_aml_configuration():
+    run_notebook('06_SpeedTestWebApp.ipynb', '06_SpeedTestWebApp.output_ipynb')
+
+
+def test_07_aml_configuration():
+    run_notebook('07_RealTimeScoring.ipynb', '07_RealTimeScoring.output_ipynb')
 
 
 def run_notebook(input_notebook, output_notebook, parameters=None):
@@ -68,15 +80,10 @@ def run_notebook(input_notebook, output_notebook, parameters=None):
     output_notebook : Name of Test Notebook Output
     parameters : Optional Parameters to pass to papermill
     """
-    path = os.path.dirname(os.path.abspath(__file__))
-    if "test" in os.path.dirname(os.path.abspath(__file__)):
-        os.chdir("../notebooks")
-    elif "notebooks" not in os.path.dirname(os.path.abspath(__file__)):
-        os.chdir("notebooks")
 
     results = pm.execute_notebook(
-        input_notebook,
-        output_notebook,
+        "notebooks/" + input_notebook,
+        "notebooks/" + output_notebook,
         parameters=parameters,
         kernel_name="az-ml-realtime-score"
     )
@@ -84,5 +91,3 @@ def run_notebook(input_notebook, output_notebook, parameters=None):
     for cell in results.cells:
         if cell.cell_type is "code":
             assert not cell.metadata.papermill.exception, "Error in Python Notebook"
-
-    os.chdir(path)
