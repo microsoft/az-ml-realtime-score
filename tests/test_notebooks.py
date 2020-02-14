@@ -4,6 +4,7 @@ ai-architecture-template - test_notebooks.py
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the MIT License.
 """
+import os
 import re
 import sys
 
@@ -102,4 +103,5 @@ def run_notebook(input_notebook, output_notebook, parameters=None, add_nunit_att
                 assert not cell.metadata.papermill.exception, "Error in Python Notebook"
     finally:
         if add_nunit_attachment is not None:
-            add_nunit_attachment('notebooks/' + output_notebook, output_notebook)
+            path = os.path.join(os.path.abspath('notebooks/'), output_notebook)
+            add_nunit_attachment(path, output_notebook)
