@@ -12,7 +12,7 @@ from azure_utils.machine_learning.utils import load_configuration
 from junit_xml import TestSuite, TestCase
 
 
-def test_00_aml_configuration():
+def test_00_aml_configuration(record_nunit_property, add_nunit_attachment):
     cfg = load_configuration("../workspace_conf.yml")
 
     subscription_id = cfg['subscription_id']
@@ -23,7 +23,7 @@ def test_00_aml_configuration():
     parameters = dict(subscription_id=subscription_id, resource_group=resource_group, workspace_name=workspace_name,
                       workspace_region=workspace_region)
 
-    run_notebook('00_AMLConfiguration.ipynb', '00_AMLConfiguration.output_ipynb', parameters)
+    run_notebook('00_AMLConfiguration.ipynb', '00_AMLConfiguration.output_ipynb', parameters, add_nunit_attachment)
 
     regex = r'Deployed (.*) with name (.*). Took (.*) seconds.'
 
@@ -32,6 +32,7 @@ def test_00_aml_configuration():
 
         test_cases = []
         for group in re.findall(regex, data):
+            record_nunit_property("test", "value")
             test_cases.append(
                 TestCase(name=group[0] + " creation", classname='00_AMLConfiguration', elapsed_sec=float(group[2]),
                          status="Success"))
@@ -70,12 +71,13 @@ def test_07_aml_configuration():
     run_notebook('07_RealTimeScoring.ipynb', '07_RealTimeScoring.output_ipynb')
 
 
-def run_notebook(input_notebook, output_notebook, parameters=None):
+def run_notebook(input_notebook, output_notebook, parameters=None, add_nunit_attachment=None):
     """
     Used to run a notebook in the correct directory.
 
     Parameters
     ----------
+    add_nunit_attachment :
     input_notebook : Name of Notebook to Test
     output_notebook : Name of Test Notebook Output
     parameters : Optional Parameters to pass to papermill
@@ -87,6 +89,12 @@ def run_notebook(input_notebook, output_notebook, parameters=None):
         parameters=parameters,
         kernel_name="az-ml-realtime-score"
     )
+
+    print("\n")
+    print("[[ATTACHMENT|" + os.path.abspath("notebooks/" + output_notebook) + "]]")
+    print("\n")
+    if add_nunit_attachment is not None:
+        add_nunit_attachment('notebooks/' + output_notebook, output_notebook)
 
     for cell in results.cells:
         if cell.cell_type is "code":

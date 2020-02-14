@@ -13,6 +13,7 @@ dependencies:
     - papermill
     - azureml-core
     - pylint-junit
+    - pytest-nunit
     - junit-xml
     - python-dotenv
     - Microsoft-AI-Azure-Utilities==0.2.0
