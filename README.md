@@ -62,7 +62,7 @@ To set up your environment to run these notebooks, please follow these steps.  T
    cd az-ml-realtime-score
    ```
 1. Copy `sample_workspace_conf.yml` to a new file, `workspace_conf.yml`, and fill in each field. This will keep secrets out of the source code, and this file will be ignored by git.
-1. Create the Python MLAKSDeployAML virtual environment using the environment.yml:
+1. Create the Python az-ml-realtime-score virtual environment using the environment.yml:
    ```
    conda env create -f environment.yml
    ```
