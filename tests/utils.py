@@ -44,23 +44,23 @@ def run_notebook(input_notebook, add_nunit_attachment, parameters=None, kernel_n
         markdown_exporter = MarkdownExporter()
 
         (body, resources) = markdown_exporter.from_notebook_node(jupyter_output)
-        with open(os.path.join(DIRECTORY, output_notebook.replace(".output_ipynb", ".md")), "w") as text_file:
-            sys.stderr.write(body)
-            text_file.write(body)
-
-        if add_nunit_attachment is not None:
-            path = os.path.join(DIRECTORY, output_notebook.replace(".output_ipynb", ".md"))
-            add_nunit_attachment(path, output_notebook)
-
-        rst_exporter = RSTExporter()
-
-        (body, resources) = rst_exporter.from_notebook_node(jupyter_output)
         with open(os.path.join(DIRECTORY, output_notebook.replace(".output_ipynb", ".txt")), "w") as text_file:
             sys.stderr.write(body)
             text_file.write(body)
 
         if add_nunit_attachment is not None:
             path = os.path.join(DIRECTORY, output_notebook.replace(".output_ipynb", ".txt"))
+            add_nunit_attachment(path, output_notebook)
+
+        rst_exporter = RSTExporter()
+
+        (body, resources) = rst_exporter.from_notebook_node(jupyter_output)
+        with open(os.path.join(DIRECTORY, output_notebook.replace(".output_ipynb", ".rst")), "w") as text_file:
+            sys.stderr.write(body)
+            text_file.write(body)
+
+        if add_nunit_attachment is not None:
+            path = os.path.join(DIRECTORY, output_notebook.replace(".output_ipynb", ".rst"))
             add_nunit_attachment(path, output_notebook)
 
         regex = r'Deployed (.*) with name (.*). Took (.*) seconds.'
