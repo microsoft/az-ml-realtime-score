@@ -6,7 +6,9 @@ Licensed under the MIT License.
 """
 import pytest
 
-from tests.utils import run_notebook
+from azure_utils.dev_ops.testing_utilities import run_notebook
+
+from notebooks import DIRECTORY
 
 
 @pytest.mark.parametrize(
@@ -14,4 +16,4 @@ from tests.utils import run_notebook
     ['00_AMLConfiguration.ipynb'],
 )
 def test_notebook(notebook, add_nunit_attachment):
-    run_notebook(notebook, add_nunit_attachment)
+    run_notebook(notebook, add_nunit_attachment, kernel_name="ai-architecture-template", root=DIRECTORY)
