@@ -35,6 +35,7 @@ which addresses the first three prerequisites.
 
 To set up your environment to run these notebooks, please follow these steps.  They setup the notebooks to use Azure seamlessly.
 
+1. Fork this repo into your own Github Namespace or import this repo in Azure DevOps.
 1. Create a _Linux_ _Ubuntu_ VM.
 1. Copy `sample_workspace_conf.yml` to a new file, `workspace_conf.yml`, and fill in each field. This will keep secrets out of the source code, and this file will be ignored by git.
 1. Log in to your VM.  We recommend that you use a graphical client
@@ -42,9 +43,9 @@ To set up your environment to run these notebooks, please follow these steps.  T
    [X2Go](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro#x2go)
    to access your VM.  The remaining steps are to be done on the VM.
 1. Open a terminal emulator.
-1. Clone, fork, or download the zip file for this repository:
+1. Clone this repository:
    ```
-   git clone https://github.com/Microsoft/ai-architecture-template.git
+   git clone https://github.com/[your_github_username]/ai-architecture-template.git
    ```
 1. Enter the local repository:
    ```
