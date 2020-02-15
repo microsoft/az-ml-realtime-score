@@ -8,6 +8,7 @@ import pytest
 
 from tests.utils import run_notebook
 
+
 @pytest.mark.parametrize(
     "notebook",
     ['00_AMLConfiguration.ipynb'],

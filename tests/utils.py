@@ -3,8 +3,10 @@ import re
 import sys
 import os
 
+import nbformat
 import papermill as pm
 from junit_xml import TestCase, TestSuite
+from nbconvert import MarkdownExporter, HTMLExporter
 
 from notebooks import DIRECTORY
 
@@ -19,6 +21,7 @@ def run_notebook(input_notebook, add_nunit_attachment, parameters=None, kernel_n
     input_notebook : Name of Notebook to Test
     output_notebook : Name of Test Notebook Output
     parameters : Optional Parameters to pass to papermill
+    :param kernel_name: Jupyter Kernal
     """
 
     output_notebook = input_notebook.replace(".ipynb", ".output_ipynb")
@@ -34,13 +37,10 @@ def run_notebook(input_notebook, add_nunit_attachment, parameters=None, kernel_n
             if cell.cell_type is "code":
                 assert not cell.metadata.papermill.exception, "Error in Python Notebook"
     finally:
-        import nbformat
-
         with open(os.path.join(DIRECTORY, output_notebook)) as json_file:
             data = json.load(json_file)
             jupyter_output = nbformat.reads(json.dumps(data), as_version=nbformat.NO_CONVERT)
 
-        from nbconvert import MarkdownExporter
         markdown_exporter = MarkdownExporter()
 
         (body, resources) = markdown_exporter.from_notebook_node(jupyter_output)
@@ -50,6 +50,17 @@ def run_notebook(input_notebook, add_nunit_attachment, parameters=None, kernel_n
 
         if add_nunit_attachment is not None:
             path = os.path.join(DIRECTORY, output_notebook.replace(".output_ipynb", ".md"))
+            add_nunit_attachment(path, output_notebook)
+
+        html_exporter = HTMLExporter()
+
+        (body, resources) = html_exporter.from_notebook_node(jupyter_output)
+        with open(os.path.join(DIRECTORY, output_notebook.replace(".output_ipynb", ".html")), "w") as text_file:
+            sys.stderr.write(body)
+            text_file.write(body)
+
+        if add_nunit_attachment is not None:
+            path = os.path.join(DIRECTORY, output_notebook.replace(".output_ipynb", ".html"))
             add_nunit_attachment(path, output_notebook)
 
         regex = r'Deployed (.*) with name (.*). Took (.*) seconds.'
