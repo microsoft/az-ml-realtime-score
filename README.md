@@ -12,7 +12,6 @@ TODO: Insert Overview Here
 TODO: Insert Design Here
 
 ## Prerequisites
-1. Linux (Ubuntu).
 1. [Anaconda Python](https://www.anaconda.com/download)
 1. [Docker](https://docs.docker.com/v17.12/install/linux/docker-ee/ubuntu) installed.
 1. [Azure account](https://azure.microsoft.com).
@@ -36,13 +35,7 @@ which addresses the first three prerequisites.
 To set up your environment to run these notebooks, please follow these steps.  They setup the notebooks to use Azure seamlessly.
 
 1. Fork this repo into your own Github Namespace or import this repo into Azure DevOps.
-1. Create a _Linux_ _Ubuntu_ VM.
 1. Copy `sample_workspace_conf.yml` to a new file, `workspace_conf.yml`, and fill in each field. This will keep secrets out of the source code, and this file will be ignored by git.
-1. Log in to your VM.  We recommend that you use a graphical client
-   such as
-   [X2Go](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro#x2go)
-   to access your VM.  The remaining steps are to be done on the VM.
-1. Open a terminal emulator.
 1. Clone this repository:
    ```
    git clone https://github.com/[your_github_username]/ai-architecture-template.git
