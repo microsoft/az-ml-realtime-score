@@ -6,7 +6,7 @@ import os
 import nbformat
 import papermill as pm
 from junit_xml import TestCase, TestSuite
-from nbconvert import MarkdownExporter, HTMLExporter
+from nbconvert import MarkdownExporter, HTMLExporter, RSTExporter
 
 from notebooks import DIRECTORY
 
@@ -52,15 +52,15 @@ def run_notebook(input_notebook, add_nunit_attachment, parameters=None, kernel_n
             path = os.path.join(DIRECTORY, output_notebook.replace(".output_ipynb", ".md"))
             add_nunit_attachment(path, output_notebook)
 
-        html_exporter = HTMLExporter()
+        rst_exporter = RSTExporter()
 
-        (body, resources) = html_exporter.from_notebook_node(jupyter_output)
-        with open(os.path.join(DIRECTORY, output_notebook.replace(".output_ipynb", ".html")), "w") as text_file:
+        (body, resources) = rst_exporter.from_notebook_node(jupyter_output)
+        with open(os.path.join(DIRECTORY, output_notebook.replace(".output_ipynb", ".txt")), "w") as text_file:
             sys.stderr.write(body)
             text_file.write(body)
 
         if add_nunit_attachment is not None:
-            path = os.path.join(DIRECTORY, output_notebook.replace(".output_ipynb", ".html"))
+            path = os.path.join(DIRECTORY, output_notebook.replace(".output_ipynb", ".txt"))
             add_nunit_attachment(path, output_notebook)
 
         regex = r'Deployed (.*) with name (.*). Took (.*) seconds.'
