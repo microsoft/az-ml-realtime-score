@@ -10,7 +10,7 @@ dependencies:
   - pylint
   - pip:
     - papermill
-    - azureml-core
+    - azureml-core==1.0.85.2
     - pylint-junit
     - pytest-nunit
     - nbconvert
