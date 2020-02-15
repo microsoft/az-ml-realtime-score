@@ -69,6 +69,8 @@ To set up your environment to run these notebooks, please follow these steps.  T
 1. Start the Jupyter notebook server:
 	```
 	jupyter notebook
+	
+You may also use the .ci/azure-pipeline.yml to configure a CI/CD build for your repostitory. Follow the directions provided within the pipeline.
 
 # Contributing
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
