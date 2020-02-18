@@ -16,5 +16,6 @@ dependencies:
     - pytest-nunit
     - nbconvert
     - junit-xml
+    - nbformat
     - Microsoft-AI-Azure-Utility-Samples==0.2.2
     - python-dotenv
