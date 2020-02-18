@@ -4,6 +4,7 @@ ai-architecture-template - test_notebooks.py
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the MIT License.
 """
+import pytest
 import os
 import re
 import sys
@@ -11,6 +12,17 @@ import sys
 import papermill as pm
 from junit_xml import TestSuite, TestCase
 
+from azure_utils.dev_ops.testing_utilities import run_notebook
+
+from notebooks import DIRECTORY
+
+
+@pytest.mark.parametrize(
+    "notebook",
+    ['00_AMLConfiguration.ipynb'],
+)
+def test_notebook(notebook, add_nunit_attachment):
+    run_notebook(notebook, add_nunit_attachment, kernel_name="ai-architecture-template", root=DIRECTORY)
 
 def test_00_aml_configuration(add_nunit_attachment):
     run_notebook('00_AMLConfiguration.ipynb', '00_AMLConfiguration.output_ipynb', add_nunit_attachment)

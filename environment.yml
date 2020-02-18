@@ -11,10 +11,10 @@ dependencies:
   - pandas
   - pip:
     - papermill
-    - azureml-core
+    - azureml-core==1.0.85.2
     - pylint-junit
     - pytest-nunit
     - nbconvert
     - junit-xml
+    - Microsoft-AI-Azure-Utility-Samples==0.2.2
     - python-dotenv
-    - Microsoft-AI-Azure-Utilities==0.2.0
