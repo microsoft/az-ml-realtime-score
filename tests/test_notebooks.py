@@ -9,56 +9,42 @@ import re
 import sys
 
 import papermill as pm
-from azure_utils.machine_learning.utils import load_configuration
 from junit_xml import TestSuite, TestCase
 
 
 def test_00_aml_configuration(add_nunit_attachment):
-    cfg = load_configuration("../workspace_conf.yml")
-
-    subscription_id = cfg['subscription_id']
-    resource_group = cfg['resource_group']
-    workspace_name = cfg['workspace_name']
-    workspace_region = cfg['workspace_region']
-
-    parameters = dict(subscription_id=subscription_id, resource_group=resource_group, workspace_name=workspace_name,
-                      workspace_region=workspace_region)
-
-    run_notebook('00_AMLConfiguration.ipynb', '00_AMLConfiguration.output_ipynb', parameters, add_nunit_attachment)
+    run_notebook('00_AMLConfiguration.ipynb', '00_AMLConfiguration.output_ipynb', add_nunit_attachment)
 
 
 def test_01_aml_configuration(add_nunit_attachment):
-    run_notebook('01_DataPrep.ipynb', '01_DataPrep.output_ipynb', add_nunit_attachment=add_nunit_attachment)
+    run_notebook('01_DataPrep.ipynb', '01_DataPrep.output_ipynb', add_nunit_attachment)
 
 
 def test_02_aml_configuration(add_nunit_attachment):
-    run_notebook('02_TrainOnLocal.ipynb', '02_TrainOnLocal.output_ipynb', add_nunit_attachment=add_nunit_attachment)
+    run_notebook('02_TrainOnLocal.ipynb', '02_TrainOnLocal.output_ipynb', add_nunit_attachment)
 
 
 def test_03_aml_configuration(add_nunit_attachment):
-    run_notebook('03_DevelopScoringScript.ipynb', '03_DevelopScoringScript.output_ipynb',
-                 add_nunit_attachment=add_nunit_attachment)
+    run_notebook('03_DevelopScoringScript.ipynb', '03_DevelopScoringScript.output_ipynb', add_nunit_attachment)
 
 
 def test_04_aml_configuration(add_nunit_attachment):
-    run_notebook('04_CreateImage.ipynb', '04_CreateImage.output_ipynb', add_nunit_attachment=add_nunit_attachment)
+    run_notebook('04_CreateImage.ipynb', '04_CreateImage.output_ipynb', add_nunit_attachment)
 
 
 def test_05_aml_configuration(add_nunit_attachment):
-    run_notebook('05_DeployOnAKS.ipynb', '05_DeployOnAKS.output_ipynb', add_nunit_attachment=add_nunit_attachment)
+    run_notebook('05_DeployOnAKS.ipynb', '05_DeployOnAKS.output_ipynb', add_nunit_attachment)
 
 
 def test_06_aml_configuration(add_nunit_attachment):
-    run_notebook('06_SpeedTestWebApp.ipynb', '06_SpeedTestWebApp.output_ipynb',
-                 add_nunit_attachment=add_nunit_attachment)
+    run_notebook('06_SpeedTestWebApp.ipynb', '06_SpeedTestWebApp.output_ipynb', add_nunit_attachment)
 
 
 def test_07_aml_configuration(add_nunit_attachment):
-    run_notebook('07_RealTimeScoring.ipynb', '07_RealTimeScoring.output_ipynb',
-                 add_nunit_attachment=add_nunit_attachment)
+    run_notebook('07_RealTimeScoring.ipynb', '07_RealTimeScoring.output_ipynb', add_nunit_attachment)
 
 
-def run_notebook(input_notebook, output_notebook, parameters=None, add_nunit_attachment=None):
+def run_notebook(input_notebook, output_notebook, add_nunit_attachment, parameters=None):
     """
     Used to run a notebook in the correct directory.
 
