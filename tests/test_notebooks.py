@@ -22,7 +22,7 @@ from notebooks import DIRECTORY
     ['00_AMLConfiguration.ipynb'],
 )
 def test_notebook(notebook, add_nunit_attachment):
-    run_notebook(notebook, add_nunit_attachment, kernel_name="ai-architecture-template", root=DIRECTORY)
+    run_notebook(notebook, add_nunit_attachment, kernel_name="az-ml-realtime-score", root=DIRECTORY)
 
 def test_00_aml_configuration(add_nunit_attachment):
     run_notebook('00_AMLConfiguration.ipynb', '00_AMLConfiguration.output_ipynb', add_nunit_attachment)
