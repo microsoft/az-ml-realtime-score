@@ -2,3 +2,10 @@ subscription_id: "<>"
 resource_group: "<>"
 workspace_name: "<>"
 workspace_region: "<>"
+
+image_name: "<>"
+aks_service_name: "<>"
+aks_name: "<>"
+aks_location: "<>"
+
+storage_conn_string: "<>"
