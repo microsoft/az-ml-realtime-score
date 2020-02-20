@@ -17,7 +17,7 @@ resources:
       endpoint: AIArchitecturesAndPractices-GitHub
 
 schedules:
-- cron: "*/10 * * * *"
+- cron: "0 */2 * * *"
   displayName: Daily midnight build
   always: true
   branches:
