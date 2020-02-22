@@ -15,7 +15,7 @@ from notebooks import DIRECTORY
 
 @pytest.mark.parametrize(
     "notebook",
-    glob.glob(DIRECTORY + "/*.ipynb")
+    [DIRECTORY + "/00_AMLConfiguration.ipynb", DIRECTORY + "/01_DataPrep.ipynb", DIRECTORY + "/02_TrainOnLocal.ipynb"]
 )
 def test_notebook(notebook, add_nunit_attachment):
     run_notebook(notebook, add_nunit_attachment, kernel_name="az-ml-realtime-score", root=DIRECTORY)
