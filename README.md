@@ -6,9 +6,6 @@
 
 In this repository there are a number of tutorials in Jupyter notebooks that have step-by-step instructions on (1) how to train a machine learning model using Python; (2) how to deploy a trained machine learning model throught Azure Machine Learning (AzureML). The tutorials cover how to deploy models on following deployment target:
 
-- [Azure Kubernetes Service (AKS) Cluster](./{{cookiecutter.project_name}}/aks)
-- [Azure IoT Edge](./{{cookiecutter.project_name}}/iotedge)
-
 ## Overview
 This scenario shows how to deploy a Frequently Asked Questions (FAQ) matching model as a web service to provide predictions for user questions. For this scenario, “Input Data” in the [architecture diagram](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/ai/realtime-scoring-python) refers to text strings containing the user questions to match with a list of FAQs. The scenario is designed for the Scikit-Learn machine learning library for Python but can be generalized to any scenario that uses Python models to make real-time predictions.
 
@@ -25,9 +22,10 @@ An example app that consumes the results is included with the scenario.
 
 ## Prerequisites
 1. Linux (Ubuntu).
-2. [Anaconda Python](https://www.anaconda.com/download)
-3. [Docker](https://docs.docker.com/v17.12/install/linux/docker-ee/ubuntu) installed.
-4. [Azure account](https://azure.microsoft.com).
+1. [Anaconda Python](https://www.anaconda.com/download)
+1. [Docker](https://docs.docker.com/v17.12/install/linux/docker-ee/ubuntu) installed.
+1. [Azure account](https://azure.microsoft.com).
+
 
 ---
 **NOTE**
@@ -44,27 +42,46 @@ DSVM](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtu
 which addresses the first three prerequisites.
 
 ## Setup
-To set up your environment to run these notebooks, please follow these steps.  They setup the notebooks to use Docker and Azure seamlessly.
-1. Create an _Ubuntu_ _Linux_ DSVM and perform the following steps.
 
-2. Install [cookiecutter](https://cookiecutter.readthedocs.io/en/latest/installation.html), a tool creates projects from project templates.
-```bash
-pip install cookiecutter
-```
+To set up your environment to run these notebooks, please follow these steps.  They setup the notebooks to use Azure seamlessly.
 
-3. Use cookiecutter to clone this repository. Cookiecutter will prompt a series of questions where you will choose a specific framework, select your deployment settings, and obtain an Azure ML workspace.
-   ```bash
-   cookiecutter https://github.com/Microsoft/MLAKSDeployAML.git
+1. Create a _Linux_ _Ubuntu_ VM.
+1. Log in to your VM.  We recommend that you use a graphical client
+   such as
+   [X2Go](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro#x2go)
+   to access your VM.  The remaining steps are to be done on the VM.
+1. Open a terminal emulator.
+1. Clone, fork, or download the zip file for this repository:
    ```
-   You will be asked to choose or enter information such as *project name*, *subsciption id*, *resource group*, etc. in an interactive way. You can press *Enter* to accept the default value or enter a value of your choice. For example, if you want to learn how to deploy machine learing model on AKS Cluster, you should choose the value "aks" for variable *deployment_type*. Instead, if you want to learn about deploying machine learning model on IoT Edge, you should select "iotedge" for the variable *deployment_type*. 
-
-   Provide a valid value for "subscription_id", otherwise a `subscription id is missing` error will be generated **after** all the questions are asked. You will have to perform Step 3 all over again. The full list of questions can be found in [cookiecutter.json](./cookiecutter.json) file. 
-
-   Please make sure all entered information are correct, as these information are used to customize the content of your repo. 
-
-4. On your local machine, you should now have a repo with the *project_name* you specified. Find the README.md file in this repo and proceed with instructions specified in it. 
-
-
+   git clone https://github.com/Microsoft/az-ml-realtime-score.git
+   ```
+1. Enter the local repository:
+   ```
+   cd az-ml-realtime-score
+   ```
+1. Copy `sample_workspace_conf.yml` to a new file, `workspace_conf.yml`, and fill in each field. This will keep secrets out of the source code, and this file will be ignored by git.
+1. Create the Python az-ml-realtime-score virtual environment using the environment.yml:
+   ```
+   conda env create -f environment.yml
+   ```
+1. Activate the virtual environment:
+   ```
+   source activate az-ml-realtime-score
+   ```
+   The remaining steps should be done in this virtual environment.
+1. Login to Azure:
+   ```
+   az login
+   ```
+   You can verify that you are logged in to your subscription by executing
+   the command:
+   ```
+   az account show -o table
+   ```
+1. Start the Jupyter notebook server:
+   ```
+   jupyter notebook
+   ```
 
 # Contributing
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
