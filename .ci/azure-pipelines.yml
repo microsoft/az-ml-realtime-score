@@ -23,6 +23,8 @@ schedules:
   branches:
     include:
     - master
+# MLAKSDeploy Pipeline
+
 
 trigger:
   batch: true
@@ -46,4 +48,3 @@ stages:
     flighting_release: false
     flighting_preview: false
     flighting_master: false
-
