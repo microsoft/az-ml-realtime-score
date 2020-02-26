@@ -1,0 +1,26 @@
+project_name: AI Default Project
+settings:
+- subscription_id:
+  - description: Azure Subscription Id
+  - value: <>
+- resource_group:
+  - description: Azure Resource Group Name
+  - value: <>
+- workspace_name:
+  - description: Azure ML Workspace Name
+  - value: <>
+- workspace_region:
+  - description: Azure ML Workspace Region
+  - value: <>
+- image_name:
+  - description: Docker Container Image Name
+  - value: <>
+- aks_service_name:
+  - description: AKS Service Name
+  - value: <>
+- aks_name:
+  - description: AKS Cluster Name
+  - value: <>
+- aks_location:
+  - description: AKS Azure Region
+  - value: <>
