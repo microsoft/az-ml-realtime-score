@@ -10,9 +10,8 @@ dependencies:
   - pylint
   - pip:
     - papermill
-    - azureml-core==1.0.85.2
     - pylint-junit
     - pytest-nunit
     - nbconvert
     - junit-xml
-    - Microsoft-AI-Azure-Utility-Samples==0.2.2
+    - Microsoft-AI-Azure-Utility-Samples

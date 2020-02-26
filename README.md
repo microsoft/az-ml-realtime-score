@@ -18,7 +18,8 @@ TODO: Insert Design Here
 
 ---
 **NOTE**
-You will need to be able to run docker commands without sudo to run this tutorial. Use the following commands to do this.
+You will need to be able to run docker commands without sudo to run this tutorial. Use the following commands to do
+this.
 
 ```bash
 sudo usermod -aG docker $USER
@@ -32,10 +33,12 @@ which addresses the first three prerequisites.
 
 ## Setup
 
-To set up your environment to run these notebooks, please follow these steps.  They setup the notebooks to use Azure seamlessly.
+To set up your environment to run these notebooks, please follow these steps.  They setup the notebooks to use Azure
+seamlessly.
 
 1. Fork this repo into your own Github Namespace or import this repo into Azure DevOps.
-1. Copy `sample_workspace_conf.yml` to a new file, `workspace_conf.yml`, and fill in each field. This will keep secrets out of the source code, and this file will be ignored by git.
+1. Copy `project_sample.yml` to a new file, `project.yml`, and fill in each field. This will keep secrets out of the 
+source code, and this file will be ignored by git.
 1. Clone your repository locally, or on an Azure Data Science Virtual Machine.
    ```
    git clone https://github.com/[your_github_username]/ai-architecture-template.git
@@ -70,7 +73,8 @@ To set up your environment to run these notebooks, please follow these steps.  T
 	```
 	jupyter notebook
 	
-You may also use the .ci/azure-pipeline.yml to configure a CI/CD build for your repostitory. Follow the directions provided within the pipeline.
+You may also use the .ci/azure-pipeline.yml to configure a CI/CD build for your repostitory. Follow the directions
+provided within the pipeline.
 
 # Contributing
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
@@ -88,4 +92,5 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 # Related projects
 
-[Microsoft AI Github](https://github.com/microsoft/ai) Find other Best Practice projects, and Azure AI Designed patterns in our central repository. 
+[Microsoft AI Github](https://github.com/microsoft/ai) Find other Best Practice projects, and Azure AI Designed patterns
+ in our central repository. 
