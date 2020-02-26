@@ -37,5 +37,4 @@ stages:
     workload_vars: ../vars/az-ml-realtime-score.yml
     flighting_release: false
     flighting_preview: false
-    flighting_master: false
-    post_cleanup: false
+    flighting_master: false  
