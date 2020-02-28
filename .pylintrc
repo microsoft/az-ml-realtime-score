@@ -60,7 +60,10 @@ confidence=
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use "--disable=all --enable=classes
 # --disable=W".
-disable=too-many-function-args,
+disable=global-variable-undefined,
+        global-statement,
+        too-many-arguments,
+        too-many-function-args,
         pointless-statement,
         missing-module-docstring,
         trailing-whitespace,
