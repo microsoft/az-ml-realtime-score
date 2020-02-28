@@ -60,7 +60,12 @@ confidence=
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use "--disable=all --enable=classes
 # --disable=W".
-disable=missing-module-docstring,
+disable=global-variable-undefined,
+        global-statement,
+        too-many-arguments,
+        too-many-function-args,
+        pointless-statement,
+        missing-module-docstring,
         trailing-whitespace,
         fixme,
         print-statement,
@@ -302,7 +307,7 @@ variable-naming-style=snake_case
 expected-line-ending-format=
 
 # Regexp for a line that is allowed to be longer than the limit.
-ignore-long-lines=^\s*(# )?<?https?://\S+>?$
+ignore-long-lines=^\s*(# )?<?https?:\S+>?$|^\s*get_ipython\S+
 
 # Number of spaces of indent required inside a hanging or continued line.
 indent-after-paren=4
@@ -454,7 +459,7 @@ signature-mutators=
 
 # List of additional names supposed to be defined in builtins. Remember that
 # you should avoid defining new builtins when possible.
-additional-builtins=
+additional-builtins=get_ipython
 
 # Tells whether unused global variables should be treated as a violation.
 allow-global-unused-variables=yes
