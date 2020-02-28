@@ -28,13 +28,20 @@ pr:
     include:
     - master
 
+variables:
+- template: ./vars/deployment_params.yml
+
 stages:
-- template: .ci/stages/deploy_notebooks_stages_v2.yml@aitemplates
+- template: .ci/stages/deploy_notebooks_stages_v5.yml@aitemplates
   parameters:
     Agent: $(Agent_Name)
     jobDisplayName: az-ml-realtime-score
-    DefaultWorkingDirectory: $(System.DefaultWorkingDirectory)
-    workload_vars: ../vars/az-ml-realtime-score.yml
+    TridentWorkloadTypeShort: ${{ variables.TridentWorkloadTypeShort }}
+    DeployLocation: ${{ variables.DeployLocation }}
+    ProjectLocation: ${{ variables.ProjectLocation }}
+    conda: ${{ variables.conda }}
+    post_cleanup: false
+
     flighting_release: false
     flighting_preview: false
     flighting_master: false  
