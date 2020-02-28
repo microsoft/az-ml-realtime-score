@@ -1,0 +1,5 @@
+variables:
+  TridentWorkloadTypeShort: azmlrts
+  DeployLocation: westus
+  ProjectLocation: "."
+  conda: az-ml-realtime-score
