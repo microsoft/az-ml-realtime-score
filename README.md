@@ -1,6 +1,6 @@
 [![Build Status](https://dev.azure.com/AZGlobal/Azure%20Global%20CAT%20Engineering/_apis/build/status/AGCE%20AI/Happy%20Path%20Builds/AI%20ML%20RTS?branchName=master)](https://dev.azure.com/AZGlobal/Azure%20Global%20CAT%20Engineering/_build/latest?definitionId=118&branchName=master)
-### Authors: Fidan Boylu Uz, Yan Zhang
-### Acknowledgements: Mario Bourgoin, Mathew Salvaris
+### Authors: Fidan Boylu Uz, Yan Zhang, Mario Bourgoin
+### Acknowledgements: Mathew Salvaris
 
 # Deploying Python models for real-time scoring using Azure Machine Learning
 
